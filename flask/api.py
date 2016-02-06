@@ -133,11 +133,22 @@ def is_current_auction(id):
     return False
 
 #Form: bid_user:
-def add_bid_to_auction(id, bid_user_id, price):
+def add_bid_to_auction(id, bid_user_id, price,location):
     timestamp = datetime.datetime.time(datetime.datetime.now())
-    result = str(bid_user_id) + "|" + str(price) + "|" + str(timestamp) + "\n"
+    result = str(bid_user_id) + "|" + str(price) + "|" + str(timestamp) + "|" + location + " \n"
     writeFileAppend("./data/bidding/auc_bid" + str(id) + ".txt",result)
 
+def get_bids(id):
+    result = []
+    try:
+        res = readFile("./data/bidding/auc_bid"+str(id)+".txt")
+        res = res.split('\n')
+        for line in res:
+            if line != "" and line != "\n":
+                result.append(line.split("|"))
+        return result
+    except:
+        return result
 
 def get_location_list():
     res = readFile("./data/locations.txt").split("\n")
