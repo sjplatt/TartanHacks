@@ -1,6 +1,6 @@
 test
-Carnegie Mellon Cafe: Sandwiches & Wraps: Smokehouse BBQ Chicken Panini: 7.79
-7.79
-10:48:32.998366
-10
+Carnegie Mellon Cafe: Shakes & Malts: Signature Milkshakes: 5.29
+5.29
+06:00:41.990690
+5
 resnick

@@ -46,21 +46,21 @@ def signup():
 @app.route('/login/<chose_id>', methods = ['GET','POST'])
 def login(chose_id):
     error = None
-    session['chose_id'] = chose_id
+    session['chose_id'] = str(chose_id)
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         checkFile = False
         users = readFile('data/users.txt')
         for user in users.splitlines():
-            print(user, username)
+
             if user ==  username:
                 checkFile = True
                 break
         if checkFile:
             text = readFile('data/%s.txt' % (username))
-            print(text)
-            print(hash(password))
+
+
             for line in text.splitlines():
                 [key, val] = line.split(":")
                 if key == "password":
@@ -69,10 +69,10 @@ def login(chose_id):
             if passwordHash == (password):
                 session['logged_in'] = True
                 session['user_logged_in'] = username
-                if session['chose_id'] == 0:
+                if session['chose_id'] == "1":
                     return redirect(url_for('request_food'))
                 else:
-                    return direct(url_for(''))
+                    return redirect(url_for('auction_list'))
             else:
                 error = 'Invalid password'
         else:
@@ -96,9 +96,9 @@ def my_auction():
 def auction_list():
     api.check_current_auctions()
     auctionList = []
-    for auctionID in api.get_location_list():
+    for auctionID in api.get_all_active():
         auctionList.append([auctionID] + api.get_info_auction(auctionID))
-    return render_template('auction_list.html', auctionList)
+    return render_template('auction_list.html', auctionList=auctionList)
 
 
 @app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
@@ -131,7 +131,7 @@ def any_auction(auction_id):
 #                                            message=session['message'])
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 # from flask import Flask, render_template, request, redirect, url_for, abort, session
 
 # app = Flask(__name__)

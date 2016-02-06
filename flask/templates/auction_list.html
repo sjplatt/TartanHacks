@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>title</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+    </head>
+    <body>
+        <h1>Auction list</h1>
+        {% block content %}
+        {% for auction in auctionList %}
+            <p>username {{auction[1]}}, description {{auction[2]}}, location {{auction[6]}}, link <a href="{{ url_for('any_auction', auction_id=auction[0]) }}">asdf</a></p>
+        {% endfor %}
+        {% endblock %}
+    </body>
+</html>

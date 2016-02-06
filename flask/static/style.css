@@ -3,14 +3,17 @@ a {
 }
 
 body {
-	font-family: Arial Rounded MT Bold;
+	font-family: "Arial Rounded MT Bold";
 	background-image: url("bgimage.jpg");
+	background-image: no-repeat;
+	margin: 0;
 }
 
 .title {
 	margin-top: 2%;
 	text-align: center;
 	font-size: xx-large;
+	background-color: rgba(0,0,0,0.4);
 }
 
 .title a, a:visited {
@@ -24,7 +27,7 @@ body {
 }
 
 .menubartitle {
-	font-size: 300%;
+	font-size: 250%;
 	color: #ffffff;
 	text-align: center;
 	margin-bottom: 25px;
@@ -34,7 +37,7 @@ body {
 	width: 100%;
 	height: 320px;
 	text-align: center;
-	font-size: 200%;
+	font-size: 200%	;
 }
 
 .tableoption td {
@@ -73,7 +76,7 @@ body {
 }
 
 .signinoption input {
-	font-size: 100%;
+	font-size: 80%;
 }
 
 .login {
@@ -82,7 +85,7 @@ body {
 }
 
 .login input {
-	font-size: 200%;
+	font-size: 150%;
 }
 
 .login button {
@@ -94,7 +97,7 @@ body {
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12;
 	border-radius: 12px;
-	font-size: 32px;
+	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 	border: solid white 2px;
 	font-family: Arial Rounded MT Bold;
@@ -109,7 +112,7 @@ body {
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12;
 	border-radius: 12px;
-	font-size: 32px;
+	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 }
 
@@ -117,7 +120,7 @@ body {
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12;
 	border-radius: 12px;
-	font-size: 32px;
+	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 	opacity: 0.8;	
 }
@@ -139,12 +142,17 @@ body {
 
 .request {
 	text-align: center;
-	font-size: 32px;
+	font-size: 16px;
 	color: #ffffff;
+	padding: 20px;
+}
+
+.request select {
+	margin-bottom: 20px
 }
 
 select {
-	font-size: 32px;
+	font-size: 16px;
 	color: #ffffff;
 	border: solid white 1px;
     background-color: transparent;
@@ -159,8 +167,9 @@ option {
 	background-color: transparent;
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12;
+	border-color: white;
 	border-radius: 12px;
-	font-size: 32px;
+	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 }
 
@@ -168,7 +177,7 @@ option {
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12;
 	border-radius: 12px;
-	font-size: 32px;
+	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 	opacity: 0.8;	
 }
