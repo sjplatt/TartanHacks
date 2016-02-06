@@ -123,12 +123,14 @@ def any_auction(auction_id):
         locations = api.get_location_list();
         image = api.get_user_image(session['user_logged_in'])
         image_map = api.user_image_map()
+        winner = get_winner(auction_id)
 
         timeleft = api.time_dif(auction_info)
         return render_template('any_auction.html',username=username,
             order=auction_info[1],location=auction_info[5],aid=auction_id,
             bids=bids,is_self=is_self,locations=locations,
-            image=image,image_map=image_map, time_left=timeleft)
+            image=image,image_map=image_map, time_left=timeleft,
+            winner=winner)
     
     location = request.form['location']
     price = request.form['price']
