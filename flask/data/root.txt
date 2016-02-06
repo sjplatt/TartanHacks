@@ -1,0 +1,2 @@
+password:root
+image:image1.jpg

@@ -4,11 +4,27 @@
         <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
     </head>
     <body>
-        <h1>Auction list</h1>
-        {% block content %}
-        {% for auction in auctionList %}
-            <p>username {{auction[1]}}, description {{auction[2]}}, location {{auction[6]}}, link <a href="{{ url_for('any_auction', auction_id=auction[0]) }}">asdf</a></p>
-        {% endfor %}
-        {% endblock %}
+        <header class = "title">
+            <h1>
+            <a href="{{ url_for('home') }}">
+                FUBER
+            </a>
+            </h1>
+        </header>
+        <section class = "menubar">
+            <h1 class = "menubartitle">Auction list</h1>
+            {% block content %}
+            {% for auction in auctionList %}
+                <p>username {{auction[1]}}, description {{auction[2]}}, location {{auction[6]}}, link <a href="{{ url_for('any_auction', auction_id=auction[0]) }}">asdf</a></p>
+            {% endfor %}
+            {% endblock %}
+        </section>
+        <div class = "nav">   
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="url">About</a></li>
+                <li><a href="url">Contact Us</a></li>
+            </ul>
+        </div>
     </body>
 </html>

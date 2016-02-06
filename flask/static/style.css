@@ -63,9 +63,40 @@ section {
 section.splash {
 	padding: 0;
 	opacity: 0.9;
-	height: 320px;
-/*	background-image: url("bgimage.jpg");
-	background-image: no-repeat;*/
+	height: 320px;	
+	font-size: 16px;
+	color: white;
+}
+
+.menubar table {
+	color: white;
+	text-align: center; 
+	height: 100%;	
+}
+
+.menubar table tr td{
+	font-size: 20px;
+	color: white;
+	text-align: center; 
+	height: 100%;	
+}
+
+.menubar td {
+	width: 50%;	
+}
+
+.menubar td table {
+	font-size: 16px;
+	text-align: center;
+	width: 100%;
+}
+
+.menubar td table tr {
+	vertical-align: top;
+}
+
+.menubar table td h3 {
+	padding-top: 25%;
 }
 
 img.splash {
@@ -114,9 +145,11 @@ section.nav ul {
 	font-size: 200%	;
 }
 
+
 .tableoption td {
 	width: 50%;
 	padding: 10%;
+	text-align: center;
 }
 
 .tableoption a {
