@@ -8,7 +8,7 @@
 
     {% block content %}
 
-      <form method="post" action="{{ url_for('my_auction') }}">
+      <form method="post" action="{{ url_for('request_food') }}">
         <select class="restaurants" name="restaurant">
           <option value="NONE" selected>Select a restaurant</option>
           {% for rest in restaurants %}
@@ -30,7 +30,7 @@
           {% for rest in restaurants %}
           {% for cat in rest_dict[rest] %}
           {% for item in rest_dict[rest][cat] %}
-            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}}">{{item.name}}</option>
+            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}},{{item.price}}">{{item.name}}: ${{item.price}}</option>
           {% endfor %}
           {% endfor %}
           {% endfor %}
