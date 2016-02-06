@@ -4,8 +4,20 @@
         <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
     </head>
     <body>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+                <span>
+                    <img src = "{{url_for('static', filename = image)}}">{{username}}
+                </span>
+            </div>
+        </header>
         <section class = "menubar">
-        <h1 class = "menubartitle">My Auction</h1>
+        <h1 class = "menubartitle">Auction</h1>
         <p class="username">Username: {{username}}</p>
         <p class="order">Order: {{order}}</p>
         <p class="location">Location: {{location}}</p>

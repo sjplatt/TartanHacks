@@ -4,28 +4,38 @@
         <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
     </head>
     <body>
-        <header class = "title">
-            <h1>
-            <a href="{{ url_for('home') }}">
-                FUBER
-            </a>
-            </h1>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+                <span>
+                    <img src = "{{url_for('static', filename = image)}}">{{username}}
+                </span>
+            </div>
         </header>
         <section class = "menubar">
             <h1 class = "menubartitle">Auction list</h1>
+            <table class="bids">
+                <tr>
+                    <th>Username</th>
+                    <th>Price</th>
+                    <th>Timestamp</th>
+                    <th>Location</th>
+                </tr>
+                <tr>
             {% block content %}
             {% for auction in auctionList %}
-                <p>username {{auction[1]}}, description {{auction[2]}}, location {{auction[6]}}, link <a href="{{ url_for('any_auction', auction_id=auction[0]) }}">asdf</a></p>
-                <p>{{time_list[auction[0]]}}</p>
+                <td><img src = "{{url_for('static', filename = image_map[auction[1]])}}">{{auction[1]}}</td> 
+                <td>{{auction[2]}}</td>
+                <td>{{time_list[auction[0]]}}</td>
+                <td>{{auction[6]}}</td>
+                <td><a href="{{ url_for('any_auction', auction_id = auction[0]) }}">BID</a></td>
             {% endfor %}
             {% endblock %}
+                </tr>
         </section>
-        <div class = "nav">   
-            <ul>
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="url">About</a></li>
-                <li><a href="url">Contact Us</a></li>
-            </ul>
-        </div>
     </body>
 </html>

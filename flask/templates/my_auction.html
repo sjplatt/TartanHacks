@@ -5,12 +5,17 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
     </head>
     <body>
-        <header class = "title">
-            <h1>
-            <a href="{{ url_for('home') }}">
-                FUBER
-            </a>
-            </h1>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+                <span>
+                    <img src = "{{url_for('static', filename = image)}}">{{username}}
+                </span>
+            </div>
         </header>
         <section class = "menubar">
             <h1 class = "menubartitle">My Auction</h1>
@@ -34,7 +39,7 @@
                             </tr>
                             {% for bid in bids %}
                                 <tr>
-                                    <td>{{bid[0]}}</td>
+                                    <td>{{bid[0]}}<img src ="{{url_for('static', filename = 'image_map[bid[0]]')}}"></td>
                                     <td>{{bid[1]}}</td>
                                     <td>{{bid[2]}}</td>
                                     <td>{{bid[3]}}</td>

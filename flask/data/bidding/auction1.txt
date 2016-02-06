@@ -1,6 +1,6 @@
 root
-The Underground: Pasta: Pasta Alfredo: 6.25
-6.25
-13:40:51.448765
-15
+Carnegie Mellon Cafe: Blended Beverages: Starbucks Blended Coffee Beverages: 5.29
+5.29
+13:29:39.539232
+5
 resnick
