@@ -43,7 +43,7 @@
                 <span class="field">{{order.split(": ")[0]}}</span> in
                 <span class="field">{{location}}.</span></p>
                 
-                <p>There {{"is" if time_left==1 else "are"}} <span class="field">{{time_left}}</span> {{"minute" if time_left==1 else "minutes"}} left to bid.</p>
+                <p>There {{"is" if time_left==1 else "are"}} <span class="field">{{time_left}}</span> {{"second" if time_left==1 else "seconds"}} left to bid.</p>
             </div>
             </div>
 
@@ -101,5 +101,6 @@
             </div>
             </div>
         </section>
+        <img class="splash" src="{{ url_for('static', filename='pizza.jpg') }}">
     </body>
 </html>

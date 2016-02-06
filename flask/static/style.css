@@ -84,9 +84,6 @@ img.splash, .splash-overlay {
 	top: 0;
 	z-index: -1000;
 }
-img.splash.light {
-	opacity: 0.7;
-}
 
 /*.menubar table {
 	color: white;
@@ -358,26 +355,36 @@ table.bids td, table.bids th {
 .request {
 	text-align: center;
 	font-size: 16px;
-	color: #ffffff;
 	padding: 20px;
 }
 
-.request select {
-	margin-bottom: 20px
+.request.menubar {
+	width: 40%;
+}
+.request.menubar .cardtitle {
+	margin: 10px 0;
+	margin-bottom: 15px;
+}
+
+.request.menubar select {
+	margin: 10px 0;
+}
+
+.request.menubar button {
+	margin-top: 20px;
 }
 
 select {
+	border: none;
+	background-color: #eeeeee;
 	font-size: 16px;
-	color: #ffffff;
-	border: solid white 1px;
-    background-color: transparent;
 }
 
 option {
 	color: black;
 }
 
-.request button {
+/*.request button {
 	color: #ffffff;
 	background-color: transparent;
 	-webkit-border-radius: 12;
@@ -395,9 +402,9 @@ option {
 	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 	opacity: 0.8;	
-}
+}*/
 
-.nav li {
+/*.nav li {
     float: left;
 }
 
@@ -406,4 +413,4 @@ option {
     color: white;
     padding: 14px 16px;
     text-decoration: none;
-}
+}*/
