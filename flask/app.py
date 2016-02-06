@@ -29,7 +29,8 @@ def request_food():
         rest_dict[restaurant] = api.parse_restaurant(restaurant)
     image = api.get_user_image(session['user_logged_in'])
     return render_template('request_food.html', restaurants=restaurants,
-        rest_dict=rest_dict,locations=api.get_location_list(),image=image)
+        rest_dict=rest_dict,locations=api.get_location_list(),image=image,
+        username=session['user_logged_in'])
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -43,7 +44,7 @@ def signup():
         writeFile('data/%s.txt' % (username), 'password:%s\n' % password)
         rand = random.randint(1,5)
         writeFile('data/%s.txt' % (username), 
-            'image:%s' % "image"+str(rand)+".jpg")
+            'image:%s' % "image"+str(rand)+".jpg\n")
         return redirect(url_for('request_food'))
     return render_template('signup.html')
 
@@ -57,14 +58,11 @@ def login(chose_id):
         checkFile = False
         users = readFile('data/users.txt')
         for user in users.splitlines():
-
             if user ==  username:
                 checkFile = True
                 break
         if checkFile:
             text = readFile('data/%s.txt' % (username))
-
-
             for line in text.splitlines():
                 [key, val] = line.split(":")
                 if key == "password":
@@ -95,8 +93,7 @@ def my_auction():
     image_map = api.user_image_map()
     aid = api.create_auction(session['user_logged_in'],order,price,auction_length,location)
     bids = api.get_bids(aid)
-    return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids,images=image,
-        image_map=image_map)
+    return redirect(url_for('any_auction',auction_id=aid))
 
 @app.route('/auction_list', methods = ['GET'])
 def auction_list():
@@ -104,30 +101,34 @@ def auction_list():
     auctionList = []
     image = api.get_user_image(session['user_logged_in'])
     image_map = api.user_image_map()
-
+    time_list = {}
     for auctionID in api.get_all_active():
-        auctionList.append([auctionID] + api.get_info_auction(auctionID))
+        info = api.get_info_auction(auctionID)
+        time_list[auctionID] = api.time_dif(info)
+        auctionList.append([auctionID] + info)
     return render_template('auction_list.html', auctionList=auctionList,
-        image=image,image_map=image_map)
+        image=image,image_map=image_map,username=session['user_logged_in'],
+        time_list=time_list)
 
 
 @app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
 def any_auction(auction_id):
     if request.method == 'GET':
         auction_info = api.get_info_auction(auction_id)
-        is_self = False
-        if auction_info[0] == session['user_logged_in']:
-            is_self = True
+        is_self = True
+        if str(auction_info[0]) == str(session['user_logged_in']):
+            is_self = False
         username = auction_info[0]
         bids = api.get_bids(auction_id)
         locations = api.get_location_list();
         image = api.get_user_image(session['user_logged_in'])
         image_map = api.user_image_map()
 
+        timeleft = api.time_dif(auction_info)
         return render_template('any_auction.html',username=username,
             order=auction_info[1],location=auction_info[5],aid=auction_id,
             bids=bids,is_self=is_self,locations=locations,
-            image=image,image_map=image_map)
+            image=image,image_map=image_map, time_left=timeleft)
     
     location = request.form['location']
     price = request.form['price']

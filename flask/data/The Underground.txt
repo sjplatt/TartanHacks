@@ -1,0 +1,112 @@
+Soup
+Soup of the day
+4.00
+[]
+Specialty Soup
+4.50
+[]
+
+Soup Combos
+Cup and a Half
+6.25
+[]
+Soup and Salad
+6.25
+[]
+
+Salads
+Classic Caesar
+5.75
+[]
+Salmon Nicoise Salad
+8.00
+[]
+TexiCobb Salad
+7.25
+[]
+Very Veggie Wedgie
+6.25
+[]
+Crunchy Quinoa Salad
+7.25
+[]
+Philly Steak Salad
+7.25
+[]
+Mediterranean Cous Cous
+6.25
+[]
+Garlic and Pepper Grilled Tuna
+8.00
+[]
+
+Underground Specialties
+Meshugna
+6.25
+[]
+BBQ Pulled Pork Sandwich
+6.25
+[]
+Blackened Salmon Filet
+7.25
+[]
+Cuban Sandwich
+6.25
+[]
+Chicken Strips with Fries
+6.25
+[]
+
+Pasta
+Pasta Alfredo
+6.25
+[]
+Pasta Marinara
+6.25
+[]
+
+Breakfast
+Breakfast Sandwiches
+4.50
+[]
+Breakfast Quesadilla
+4.50
+[]
+Breakfast Meshugna
+4.50
+[]
+PB Banana Crunch
+4.50
+[]
+Three Egg Omelette
+4.50
+[]
+French Toast
+4.50
+[]
+Meal Deal
+2.95
+[]
+Assorted Cereal
+2.50
+[]
+Continental Breakfast
+4.50
+[]
+Fruit cup
+1.50
+[]
+Bacon (3)
+2.95
+[]
+Sausage
+2.95
+[]
+Hashbrowns
+1.95
+[]
+Potato pancakes (2)
+3.75
+[]
+
+

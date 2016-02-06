@@ -73,14 +73,23 @@ def get_restaurants():
 
 ######MAIN API#############
 
+def time_dif(auc):
+    ts = parser.parse(auc[3])+datetime.timedelta(minutes=int(auc[4]))
+    cur_time = datetime.datetime.now()
+    if ts > cur_time:
+        delt = ts-cur_time
+        return delt.seconds
+    else: return 0
+
 def find_highest_offset():
     res = []
     for file in os.listdir("./data/bidding"):
         if file.endswith(".txt"):
             if "auction" in file[:7]:
                 res.append(int(file[7:-4]))
-
-    return max(res)+1
+    if len(res) == 0:
+        return 1
+    else: return max(res)+1
 
 def create_auction(userid, order, price, wait, loc):
     print("START")
@@ -209,14 +218,15 @@ def get_my_auctions(userid):
 
 #USER
 def get_user_image(userid):
-    res = readFile("./data/" + str(userid) + ".txt").split("\n")
+    res = readFile("data/" + str(userid) + ".txt").split("\n")
     return res[1].split(":")[1]
 
 
 def user_image_map():
-    res = readFile("./data/users.txt").split("\n")
+    res = readFile("data/users.txt").split("\n")
     dic = {}
-    for line in res:
+    for line    in res:
+        if line == '': continue
         dic[line] = get_user_image(line)
     return dic
 #add_bid_to_auction(2,"sjplatt","2")
