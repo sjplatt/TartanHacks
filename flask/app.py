@@ -79,11 +79,14 @@ def login():
 def my_auction():
     restaurant = request.form['restaurant']
     category = request.form['category']
-    item = request.form['item']
+    item,price = request.form['item'].split(',')
     auction_length = request.form['auction_length']
     location = request.form['location']
-    #print(restaurant,category,item,auction_length,location)
-    return render_template('my_auction.html')
+    order = restaurant + ": " + category + ": " + item + ": " + price
+
+    aid = api.create_auction(session['user_logged_in'],order,price,auction_length,location)
+    bids = api.get_bids(aid)
+    return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids)
 
 @app.route('/auction_list', method = ['GET'])
 def auction_list():

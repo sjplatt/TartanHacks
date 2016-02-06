@@ -5,57 +5,81 @@
         <script src="{{ url_for('static', filename='jquery-2.2.0.min.js') }}"></script>
     </head>
     <body>
+        <header class = "title">
+            <h1>
+            <a href="{{ url_for('home') }}">
+                FUBER
+            </a>
+            </h1>
+        </header>
+        <section class = "menubar">
+        <h1 class = "menubartitle">Request Food</h1>
+        {% block content %}
+          <form method="post" action="{{ url_for('my_auction') }}" class = "request">
+            <select class="restaurants" name="restaurant">
+              <option value="NONE" selected>Select a restaurant</option>
+              {% for rest in restaurants %}
+                <option value="{{rest}}">{{rest}}</option>
+              {% endfor %}
+            </select>
 
-    {% block content %}
+            <select class="categories" name="category">
+              <option value="NONE" selected>Select a category</option>
+              {% for rest in restaurants %}
+              {% for cat in rest_dict[rest] %}
+                <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{cat}}">{{cat}}</option>
+              {% endfor %}
+              {% endfor %}
+            </select>
 
-      <form method="post" action="{{ url_for('request_food') }}">
-        <select class="restaurants" name="restaurant">
-          <option value="NONE" selected>Select a restaurant</option>
-          {% for rest in restaurants %}
-            <option value="{{rest}}">{{rest}}</option>
-          {% endfor %}
-        </select>
+            <select class="items" name="item">
+              <option value="NONE" selected>Select an item</option>
+              {% for rest in restaurants %}
+              {% for cat in rest_dict[rest] %}
+              {% for item in rest_dict[rest][cat] %}
+                <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}},{{item.price}}">{{item.name}}: ${{item.price}}</option>
+              {% endfor %}
+              {% endfor %}
+              {% endfor %}
+            </select>
 
-        <select class="categories" name="category">
-          <option value="NONE" selected>Select a category</option>
-          {% for rest in restaurants %}
-          {% for cat in rest_dict[rest] %}
-            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{cat}}">{{cat}}</option>
-          {% endfor %}
-          {% endfor %}
-        </select>
+            <br>
+            Auction length: <select name="auction_length">
+              <option value="5">5 min</option>
+              <option value="10">10 min</option>
+              <option value="15">15 min</option>
+              <option value="20">20 min</option>
+              <option value="25">25 min</option>
+              <option value="30">30 min</option>
+            </select>
 
-        <select class="items" name="item">
-          <option value="NONE" selected>Select an item</option>
-          {% for rest in restaurants %}
-          {% for cat in rest_dict[rest] %}
-          {% for item in rest_dict[rest][cat] %}
-            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}},{{item.price}}">{{item.name}}: ${{item.price}}</option>
-          {% endfor %}
-          {% endfor %}
-          {% endfor %}
-        </select>
+            <br>
+            Location to deliver to: <select name="location">
+              {% for loc in locations %}
+                <option value="{{loc}}">{{loc}}</option>
+              {% endfor %}
+            </select>
 
-        <br>
-        Auction length: <select name="auction_length">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-          <option value="25">25</option>
-          <option value="30">30</option>
-        </select>
+            <br>
+            <button type="submit">Create auction</button>
+          </form>
 
-        <br>
-        Location to deliver to: <select name="location">
-          {% for loc in locations %}
-            <option value="{{loc}}">{{loc}}</option>
-          {% endfor %}
-        </select>
+        </section>
+        
+        <div class = "nav">
+            <ul>
+              <li><a href="url">Home</a></li>
+                <li><a href="url">About</a></li>
+                <li><a href="url">Contact Us</a></li>
+            </ul>
+        </div>
 
-        <br>
-        <button type="submit">Create auction</button>
-      </form>
+      <style>
+        select.categories,
+        select.items {
+          display: none;
+        }
+      </style>
 
       <script>
         var restaurant_selector = $("select.restaurants");
@@ -66,12 +90,13 @@
 
         var hide_stuff = function(elem) {
           elem.hide();
-          elem.children("option").hide();
-          elem.children("option[value='"+none+"']").show();
+          elem.children("option").hide().prop("selected",false);
+          elem.children("option[value='"+none+"']").show().prop("selected",true);
         }
         var show_stuff = function(elem, classname) {
           elem.show();
           elem.children(classname).show();
+          elem.children("option[value='"+none+"']").show().prop("selected",true);
         }
         var classname_from_val = function(val) {
           return val.replace(/[ -'&]/g, '-');
@@ -92,6 +117,7 @@
             hide_stuff(item_selector);
           }
           else {
+            hide_stuff(category_selector);
             show_stuff(category_selector, "option."+selected_restaurant_classname);
           }
         });
@@ -104,6 +130,7 @@
             hide_stuff(item_selector);
           }
           else {
+            hide_stuff(item_selector);
             show_stuff(item_selector, "option."+selected_restaurant_classname+"."+selected_category_classname);
             console.log(selected_restaurant_classname + " " + selected_category_classname);
           }
