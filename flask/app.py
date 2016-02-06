@@ -88,6 +88,16 @@ def my_auction():
     bids = api.get_bids(aid)
     return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids)
 
+<<<<<<< HEAD
+@app.route('/auction_list', method = ['GET'])
+def auction_list():
+    auctionList = []
+    for auctionID in api.get_location_list():
+        auctionList.append(get_info_auction(auctionID))
+    return render_template('auction_list.html', auctionList)
+
+
+=======
 @app.route('/any_auction/<auction_id>',methods = ['GET'])
 def any_auction(auction_id):
     auction_info = api.get_info_auction(auction_id)
@@ -99,6 +109,7 @@ def any_auction(auction_id):
     return render_template('any_auction.html',username=username,
         order=auction_info[1],location=auction_info[5],aid=auction_id,
         bids=bids,is_self=is_self)
+>>>>>>> 0c03259e9985023667603c380556ef9b4a549a2a
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
