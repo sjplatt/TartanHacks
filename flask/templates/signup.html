@@ -11,12 +11,14 @@
             </a>
             </h1>
         </header>
-	    <h1>Sign up</h1>
-        <form method="post" action="{{ url_for('signup') }}">
-            <p><label>Username:</label> <input type="text" name="username" required></p>
-            <p><label>Password:</label> <input type="text" name="password" required></p>
-            <p><button type="submit">Send</button></p>
-        </form>
+        <section class = "menubar">
+    	    <h1 class = "menubartitle">Sign up</h1>
+            <form method="post" action="{{ url_for('signup') }}" class = "login">
+                <p><input type="text" name="username" required placeholder = "Username"></p>
+                <p><input type="text" name="password" required placeholder = "Password"></p>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
 		<div class = "nav">
 		    <ul>
 		    	<li><a href="url">Home</a></li>

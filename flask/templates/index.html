@@ -11,16 +11,15 @@
             </a>
             </h1>
         </header>
-        <img src="{{ url_for('static', filename = 'indeximage.jpg') }}">
-        <table class = "tableoption">
-            <tr>
-                <td><a href="{{ url_for('login') }}">Get Food For Someone</a></td>
-            </tr>
-            <tr>
-                <td><a href="{{ url_for('login') }}">Get Food For Me</a></td>
-            </tr>
-        </table>
-		<div class = "nav">
+        <section class = "menubar">
+            <table class = "tableoption">
+                <tr>
+                    <td><a href="{{ url_for('login') }}">Get Food For Someone</a></td>
+                    <td><a href="{{ url_for('login') }}">Get Food For Me</a></td>
+                </tr>
+            </table>
+        </section>
+		<div class = "nav">   
 		    <ul>
 		    	<li><a href="{{ url_for('home') }}">Home</a></li>
 		        <li><a href="url">About</a></li>
