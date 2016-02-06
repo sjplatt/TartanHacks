@@ -7,42 +7,49 @@
     <body>
 
     {% block content %}
-      <select class="restaurants" name="restaurant">
-        <option value="NONE" selected>Select a restaurant</option>
-        {% for rest in restaurants %}
-          <option value="{{rest}}">{{rest}}</option>
-        {% endfor %}
-      </select>
 
-      <select class="categories" name="category">
-        <option value="NONE" selected>Select a category</option>
-        {% for rest in restaurants %}
-        {% for cat in rest_dict[rest] %}
-          <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{cat}}">{{cat}}</option>
-        {% endfor %}
-        {% endfor %}
-      </select>
-
-      <select class="items" name="item">
-        <option value="NONE" selected>Select an item</option>
-        {% for rest in restaurants %}
-        {% for cat in rest_dict[rest] %}
-        {% for item in rest_dict[rest][cat] %}
-          <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}}">{{item.name}}</option>
-        {% endfor %}
-        {% endfor %}
-        {% endfor %}
-      </select>
-
-      {% for rest in restaurants %}
-        <h3>{{rest}}</h3>
-        {% for cat in rest_dict[rest] %}
-          <h4>{{cat}}</h4>
-          {% for item in rest_dict[rest][cat] %}
-            <h5>{{item}}</h5>
+      <form method="post" action="{{ url_for('my_auction') }}">
+        <select class="restaurants" name="restaurant">
+          <option value="NONE" selected>Select a restaurant</option>
+          {% for rest in restaurants %}
+            <option value="{{rest}}">{{rest}}</option>
           {% endfor %}
-        {% endfor %}
-      {% endfor %}
+        </select>
+
+        <select class="categories" name="category">
+          <option value="NONE" selected>Select a category</option>
+          {% for rest in restaurants %}
+          {% for cat in rest_dict[rest] %}
+            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{cat}}">{{cat}}</option>
+          {% endfor %}
+          {% endfor %}
+        </select>
+
+        <select class="items" name="item">
+          <option value="NONE" selected>Select an item</option>
+          {% for rest in restaurants %}
+          {% for cat in rest_dict[rest] %}
+          {% for item in rest_dict[rest][cat] %}
+            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}}">{{item.name}}</option>
+          {% endfor %}
+          {% endfor %}
+          {% endfor %}
+        </select>
+
+        <br>
+        <input name="auction_length" type="number"></input>
+
+        <br>
+        <select name="location">
+          {% for loc in locations %}
+            <option value="{{loc}}">{{loc}}</option>
+          {% endfor %}
+        </select>
+
+        <br>
+        <button type="submit">Create auction</button>
+          }
+      </form>
 
       <script>
         var restaurant_selector = $("select.restaurants");
@@ -56,15 +63,9 @@
           elem.children("option").hide();
           elem.children("option[value='"+none+"']").show();
         }
-        var show_stuff = function(elem, classname, classname2) {
-          if (classname2 === "") {
-            elem.show();
-            elem.children("option."+classname).show();
-          }
-          else {
-            elem.show();
-            elem.children("option."+classname+"."+classname2).show();
-          }
+        var show_stuff = function(elem, classname) {
+          elem.show();
+          elem.children(classname).show();
         }
         var classname_from_val = function(val) {
           return val.replace(/[ -'&]/g, '-');
@@ -85,7 +86,7 @@
             hide_stuff(item_selector);
           }
           else {
-            show_stuff(category_selector, selected_restaurant_classname, "");
+            show_stuff(category_selector, "option."+selected_restaurant_classname);
           }
         });
 
@@ -97,7 +98,7 @@
             hide_stuff(item_selector);
           }
           else {
-            show_stuff(item_selector, selected_restaurant_classname, selected_category_classname);
+            show_stuff(item_selector, "option."+selected_restaurant_classname+"."+selected_category_classname);
             console.log(selected_restaurant_classname + " " + selected_category_classname);
           }
         });

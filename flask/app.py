@@ -27,9 +27,8 @@ def request_food():
     for restaurant in restaurants:
         rest_dict[restaurant] = api.parse_restaurant(restaurant)
     
-    print(rest_dict)
     return render_template('request_food.html', restaurants=restaurants,
-        rest_dict=rest_dict)
+        rest_dict=rest_dict,locations=api.get_location_list())
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -76,6 +75,15 @@ def login():
             error = 'Invalid username'
     return render_template('login.html')
 
+@app.route('/my_auction',methods = ['POST'])
+def my_auction():
+    restaurant = request.form['restaurant']
+    category = request.form['category']
+    item = request.form['item']
+    auction_length = request.form['auction_length']
+    location = request.form['location']
+    #print(restaurant,category,item,auction_length,location)
+    return render_template('my_auction.html')
 
 # @app.route('/message')
 # def message():
