@@ -92,9 +92,11 @@ def my_auction():
 def auction_list():
     api.check_current_auctions()
     auctionList = []
-    for auctionID in api.get_location_list():
+    print(api.get_all_active())
+    for auctionID in api.get_all_active():
         auctionList.append([auctionID] + api.get_info_auction(auctionID))
-    return render_template('auction_list.html', auctionList)
+    print("dfdsa")
+    return render_template('auction_list.html', auctionList=auctionList)
 
 
 @app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
@@ -127,7 +129,7 @@ def any_auction(auction_id):
 #                                            message=session['message'])
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 # from flask import Flask, render_template, request, redirect, url_for, abort, session
 
 # app = Flask(__name__)

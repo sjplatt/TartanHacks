@@ -159,7 +159,11 @@ def get_location_list():
 
 def get_all_active():
     res = readFile("./data/bidding/open_auctions.txt").split("\n")
-    return res
+    answer = []
+    for line in res:
+        if line != '':
+            answer.append(line)
+    return answer
 
 def get_info_auction(id):
     res = readFile("./data/bidding/auction"+str(id) + ".txt")
