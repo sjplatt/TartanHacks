@@ -112,18 +112,20 @@ def auction_list():
 def any_auction(auction_id):
     if request.method == 'GET':
         auction_info = api.get_info_auction(auction_id)
-        is_self = False
-        if auction_info[0] == session['user_logged_in']:
-            is_self = True
+        is_self = True
+        if str(auction_info[0]) == str(session['user_logged_in']):
+            is_self = False
         username = auction_info[0]
         bids = api.get_bids(auction_id)
         locations = api.get_location_list();
         image = api.get_user_image(session['user_logged_in'])
         image_map = api.user_image_map()
+
+        timeleft = api.time_dif(auction_info)
         return render_template('any_auction.html',username=username,
             order=auction_info[1],location=auction_info[5],aid=auction_id,
             bids=bids,is_self=is_self,locations=locations,
-            image=image,image_map=image_map)
+            image=image,image_map=image_map, time_left=timeleft)
     
     location = request.form['location']
     price = request.form['price']
