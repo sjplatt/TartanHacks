@@ -34,6 +34,7 @@ a:link, a:visited {
 }
 
 .tableoption td {
+	width: 50%;
 }
 
 .nav {
