@@ -123,7 +123,7 @@ def any_auction(auction_id):
         locations = api.get_location_list();
         image = api.get_user_image(session['user_logged_in'])
         image_map = api.user_image_map()
-        winner = get_winner(auction_id)
+        winner = api.get_winner(auction_id)
 
         timeleft = api.time_dif(auction_info)
         return render_template('any_auction.html',username=username,
