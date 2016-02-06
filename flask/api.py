@@ -169,6 +169,51 @@ def get_info_auction(id):
     res = readFile("./data/bidding/auction"+str(id) + ".txt")
     return res.split("\n")
 
+#Return None of no winner, winner list if winner
+#Winner list: [winnerid, winnerprice, winner location]
+def get_winner(auctionid):
+    res = readFile("./data/closed_auctions.txt").split("\n")
+    for line in res:
+        split = line.split("|")
+        if split[0] == auctionid:
+            if len(split) != 1:
+                return split[1:]
+    return None
+
+def set_winner(auctionid,winnerid,winnerprice,winnerloc):
+    res = readFile("./data/closed_auctions.txt").split("\n")
+    result = ""
+    for line in res:
+        if line.split("|")[0] == auctionid:
+            result+=str(auctionid) + "|" + str(winnerid) + "|"
+            + str(winnerprice) + "|" + str(winnerloc) + "\n"
+        else: result+=line
+    writeFile("./data/closed_auctions.txt",result)
+
+# Returns a pair of lists that contains lists of lists 
+def get_my_auctions(userid):
+    op = []
+    closed = []
+    res = readFile("./data/bidding/open_auctions.txt").split("\n")
+    for line in res:
+        res1 = readFile("./data/bidding/auction" + line + ".txt").split('\n')
+        if res1[0] == userid:
+            op.append(res1)
+
+    res = readFile("./data/bidding/closed_auctions.txt").split("\n")
+    for line in res:
+        res1 = readFile("./data/bidding/auction" + line + ".txt").split('\n')
+        if res1[0] == userid:
+            closed.append(res1)
+    return op,closed
+
+
+
+#USER
+def get_user_image(userid):
+    res = readFile("./data/" + str(userid) + ".txt").split("\n")
+    return res[1].split(":")[1]
+
 #add_bid_to_auction(2,"sjplatt","2")
 #create_auction("sjplatt","burrito","6.95","5","resnick")
 #create_auction("sjplatt","burrito","6.95","1","resnick")
