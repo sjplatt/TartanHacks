@@ -18,10 +18,12 @@
                 </span>
             </div>
         </header>
-        <section class = "menubar">
-        <h1 class = "menubartitle">Request Food</h1>
+
+        <section class="request menubar">
+        <div class="card">
+        <h1 class="cardtitle">Request food</h1>
         {% block content %}
-          <form method="post" action="{{ url_for('my_auction') }}" class="request">
+          <form method="post" action="{{ url_for('my_auction') }}">
             <select class="restaurants" name="restaurant">
               <option value="NONE" selected>Select a restaurant</option>
               {% for rest in restaurants %}
@@ -71,6 +73,7 @@
           </form>
 
         </section>
+        </div>
         
         <div class = "nav">
             <ul>
