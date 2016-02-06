@@ -66,6 +66,12 @@
               {% endfor %}
             </select>
 
+            <div class="hours">
+              <p class="ug">Hours today: 8:30-2:30</p>
+              <p class="cmc">Hours today: 8:00-2:00</p>
+              
+            </div>
+
             <br>
             Auction length: <select name="auction_length">
               <option value="5">5 min</option>
@@ -101,6 +107,7 @@
         var restaurant_selector = $("select.restaurants");
         var category_selector = $("select.categories");
         var item_selector = $("select.items");
+        var hrs = $(".hours");
 
         var none = "NONE";
 
@@ -120,6 +127,9 @@
 
         hide_stuff(category_selector);
         hide_stuff(item_selector);
+        hide_stuff(hrs);
+
+        hrs.children("p").hide();
 
         var selected_restaurant_classname;
         var selected_category_classname;
@@ -131,8 +141,20 @@
           if (selected_restaurant_classname === none) {
             hide_stuff(category_selector);
             hide_stuff(item_selector);
+            hide_stuff(hrs);
           }
           else {
+
+            
+            if (selected_restaurant_classname == ("Carnegie-Mellon-Cafe")) {
+              hrs.children("p").hide();
+              show_stuff(hrs, ".cmc");
+
+            }
+            else {
+              hrs.children("p").hide();
+              show_stuff(hrs, ".ug");
+            }
             hide_stuff(category_selector);
             show_stuff(category_selector, "option."+selected_restaurant_classname);
           }
