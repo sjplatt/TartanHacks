@@ -1,6 +1,0 @@
-root
-Carnegie Mellon Cafe: Ice Cream Sundaes: Hot Fudge Sundae: 4.49
-4.49
-13:06:20.207120
-5
-resnick

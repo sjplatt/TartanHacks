@@ -1,6 +1,0 @@
-test
-Carnegie Mellon Cafe: Sides: Hash Brown Patty: 1.99
-1.99
-11:12:26.880838
-5
-resnick
