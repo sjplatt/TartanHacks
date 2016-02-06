@@ -51,8 +51,15 @@ header .title {
 	float: left;
 }
 
+header .accounticon {
+	font-size: 30px;
+	margin-top: 5px;
+	float: right;
+}
 
-
+header .accounticon tr{
+	text-align: center;
+}
 
 
 
