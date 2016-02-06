@@ -1,3 +1,6 @@
+a {
+	text-decoration: none;
+}
 
 body {
 	font-family: Arial Rounded MT Bold;
@@ -7,7 +10,6 @@ body {
 	margin-top: 2%;
 	text-align: center;
 	font-size: xx-large;
-	color: black;
 }
 
 .title a, a:visited {
@@ -15,37 +17,55 @@ body {
 	color: black;
 }
 
+.menubar {
+	background-image: url("indeximage.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.8;
+	height: 320px;
+}
+
+.menubartitle {
+	font-size: 300%;
+	color: #ffffff;
+	text-align: center;
+}
 
 .tableoption {
-	width: 50%;
-	height: 60%;
-	text-align: center;
-	float: right;
-	font-size: 300%;
-	background-color: lightblue;
-}
-
-.tableoption a {
-	color: white;
-    text-align: center;	
-    text-decoration: none;
-    display: inline-block;
-}
-
-.tableoption a {
-	color: white;
-    text-align: center;	
-    text-decoration: none;
-    display: inline-block;
-}
-
-.option {
 	width: 100%;
-	height: 60%;
-	font-size: 200%;
-	background-color: lightblue;
+	height: 320px;
 	text-align: center;
-	display: inline-block;
+	font-size: 200%;
+}
+
+.tableoption td {
+	width: 50%;
+}
+
+.tableoption a {
+	color: #ffffff;
+    text-align: center;	
+    text-decoration: none;
+    display: inline-block;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	font-size: 32px;
+	padding: 10px 20px 10px 20px;
+	border: solid #C0C0C0 2px;
+}
+
+.tableoption a:hover {
+	color: #ffffff;
+    text-align: center;	
+    text-decoration: none;
+    display: inline-block;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	font-size: 32px;
+	padding: 10px 20px 10px 20px;
+	opacity: 0.8;
 }
 
 .signinoption form {
@@ -56,27 +76,56 @@ body {
 	font-size: 100%;
 }
 
-.btn {
+.login {
+	width: 100%;
+	text-align: center;
+}
+
+.login input {
+	font-size: 200%;
+}
+
+.login button {
+	color: #ffffff;
+	background-color: transparent;
+    text-align: center;	
+    text-decoration: none;
+    display: inline-block;
 	-webkit-border-radius: 12;
 	-moz-border-radius: 12;
 	border-radius: 12px;
-	font-family: Arial;
-	color: #ffffff;
 	font-size: 32px;
-	background: #3498db;
 	padding: 10px 20px 10px 20px;
-	border: solid #3498db 2px;
-	text-decoration: none;
+	border: solid #C0C0C0 2px;
+	font-family: Arial Rounded MT Bold;
 }
 
-.btn:hover {
-	background: #3cb0fd;
-	text-decoration: none;
+.login button:hover {
+	opacity: 0.8;
+}
+
+.login button a{
+	color: #ffffff;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	font-size: 32px;
+	padding: 10px 20px 10px 20px;
+}
+
+.login button:hover a{
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	font-size: 32px;
+	padding: 10px 20px 10px 20px;
+	opacity: 0.8;	
 }
 
 .nav {
 	bottom: 0;
 	position: absolute;
+	left: 35%;
 }
 
 .nav ul {
