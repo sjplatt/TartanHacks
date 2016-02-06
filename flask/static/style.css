@@ -3,15 +3,17 @@ a {
 }
 
 body {
-	font-family: Arial Rounded MT Bold;
+	font-family: "Arial Rounded MT Bold";
 	background-image: url("bgimage.jpg");
 	background-image: no-repeat;
+	margin: 0;
 }
 
 .title {
 	margin-top: 2%;
 	text-align: center;
 	font-size: xx-large;
+	background-color: rgba(0,0,0,0.4);
 }
 
 .title a, a:visited {

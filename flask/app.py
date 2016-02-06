@@ -43,9 +43,10 @@ def signup():
         return redirect(url_for('request_food'))
     return render_template('signup.html')
 
-@app.route('/login', methods = ['GET','POST'])
-def login():
+@app.route('/login/<chose_id>', methods = ['GET','POST'])
+def login(chose_id):
     error = None
+    session['chose_id'] = str(chose_id)
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -68,12 +69,15 @@ def login():
             if passwordHash == (password):
                 session['logged_in'] = True
                 session['user_logged_in'] = username
-                return redirect(url_for('request_food'))
+                if session['chose_id'] == "1":
+                    return redirect(url_for('request_food'))
+                else:
+                    return redirect(url_for('auction_list'))
             else:
                 error = 'Invalid password'
         else:
             error = 'Invalid username'
-    return render_template('login.html')
+    return render_template('login.html',chose_id=chose_id)
 
 @app.route('/my_auction',methods = ['POST'])
 def my_auction():
@@ -92,9 +96,9 @@ def my_auction():
 def auction_list():
     api.check_current_auctions()
     auctionList = []
-    for auctionID in api.get_location_list():
+    for auctionID in api.get_all_active():
         auctionList.append([auctionID] + api.get_info_auction(auctionID))
-    return render_template('auction_list.html', auctionList)
+    return render_template('auction_list.html', auctionList=auctionList)
 
 
 @app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
@@ -127,7 +131,7 @@ def any_auction(auction_id):
 #                                            message=session['message'])
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 # from flask import Flask, render_template, request, redirect, url_for, abort, session
 
 # app = Flask(__name__)

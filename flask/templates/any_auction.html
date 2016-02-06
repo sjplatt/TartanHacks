@@ -14,6 +14,7 @@
         {% block content %}
         <h3>Bids</h3>
 
+        {% if is_self %}
         <form method="post" action="{{ url_for('any_auction',auction_id=aid) }}" class="request">
             I will deliver from <select name="location">
             {% for loc in locations %}
@@ -24,6 +25,7 @@
             $<input name="price" type="number" />
             <button type="submit">Submit</button>
         </form>
+        {% endif %}
 
         <table class="bids">
             <tr>
