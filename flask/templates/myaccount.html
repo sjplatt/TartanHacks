@@ -12,8 +12,23 @@
                     FUBER
                 </a>
                 </span>
-                <span>
-                    <img src = "{{url_for('static', filename = image)}}">{{username}}
+                <span class = "accounticon">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href = "{{url_for('my_account')}}">
+                                <img src = "{{url_for('static', filename = image)}}">
+                                </a>
+                            <td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href = "{{url_for('my_account')}}">
+                                {{username}}
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
                 </span>
             </div>
         </header>
