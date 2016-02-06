@@ -138,6 +138,13 @@ def add_bid_to_auction(id, bid_user_id, price):
     result = str(bid_user_id) + "|" + str(price) + "|" + str(timestamp) + "\n"
     writeFileAppend("./data/bidding/auc_bid" + str(id) + ".txt",result)
 
+
+def get_location_list():
+    res = readFile("./data/locations.txt").split("\n")
+    ret = []
+    for line in res:
+        ret.append(line)
+    return ret
 #add_bid_to_auction(2,"sjplatt","2")
 #create_auction("sjplatt","burrito","6.95","5","resnick")
 #create_auction("sjplatt","burrito","6.95","1","resnick")
