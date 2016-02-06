@@ -34,7 +34,7 @@
                             </tr>
                             {% for bid in bids %}
                                 <tr>
-                                    <td>{{bid[0]}}</td>
+                                    <td>{{bid[0]}}<img src ="{{url_for('static', filename = 'image_map[bid[0]]')}}"></td>
                                     <td>{{bid[1]}}</td>
                                     <td>{{bid[2]}}</td>
                                     <td>{{bid[3]}}</td>
