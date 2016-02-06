@@ -59,6 +59,10 @@ body {
 	padding-top: 25%;
 }
 
+.menubar p {
+	text-align: center;
+}
+
 .menubartitle {
 	font-size: 250%;
 	color: #ffffff;
