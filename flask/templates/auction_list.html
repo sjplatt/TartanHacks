@@ -31,26 +31,31 @@
                 </span>
             </div>
         </header>
-        <section class = "menubar">
-            <h1 class = "menubartitle">Auction list</h1>
-            <table class="bids">
-                <tr>
-                    <th>Username</th>
-                    <th>Price</th>
-                    <th>Timestamp</th>
-                    <th>Location</th>
-                </tr>
-                <tr>
-            {% block content %}
-            {% for auction in auctionList %}
-                <td><img src = "{{url_for('static', filename = image_map[auction[1]])}}">{{auction[1]}}</td> 
-                <td>{{auction[2]}}</td>
-                <td>{{time_list[auction[0]]}}</td>
-                <td>{{auction[6]}}</td>
-                <td><a href="{{ url_for('any_auction', auction_id = auction[0]) }}">BID</a></td>
-            {% endfor %}
-            {% endblock %}
-                </tr>
+        <section class="menubar">
+            <div class="auctionlist card">
+                <h1 class="cardtitle">Active auctions</h1>
+                <table class="bids">
+                    <tr>
+                        <th>User</th>
+                        <th>Request</th>
+                        <th>Restaurant</th>
+                        <th>Seconds left</th>
+                        <th>Deliver to</th>
+                    </tr>
+                    <tr>
+                    {% block content %}
+                    {% for auction in auctionList %}
+                        <td><img src = "{{url_for('static', filename = image_map[auction[1]])}}">{{auction[1]}}</td> 
+                        <td>{{auction[2].split(": ")[2] + ", $" + auction[2].split(": ")[3]}}</td>
+                        <td>{{auction[2].split(": ")[0]}}
+                        <td>{{time_list[auction[0]]}}</td>
+                        <td>{{auction[6]}}</td>
+                        <td><button><a href="{{ url_for('any_auction', auction_id = auction[0]) }}">Bid!</a></button></td>
+                    {% endfor %}
+                    {% endblock %}
+                    </tr>
+                </table>
+            </div>
         </section>
         <img class="splash" src="{{ url_for('static', filename='pizza.jpg') }}">
     </body>
