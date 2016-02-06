@@ -18,11 +18,13 @@ a {
 	src: url("Overpass-Light.ttf") format("truetype");
 }
 
-body {
+body, form *, button {
 	font-family: "Overpass", Arial Rounded MT Bold, Arial;
+}
+body {
 	margin: 0;
-	color: white;
-	background-color: black;
+	background-color: #eeeeee;
+	color: #333333;
 }
 
 header {
@@ -38,7 +40,7 @@ header div {
 	padding: 0 10%;
 }
 
-header a, a:visited {
+a, a:visited, a:active {
 	text-decoration: none;
 	color: white;
 }
@@ -68,37 +70,6 @@ section.splash {
 	color: white;
 }
 
-.menubar table {
-	color: white;
-	text-align: center; 
-	height: 100%;	
-}
-
-.menubar table tr td{
-	font-size: 20px;
-	color: white;
-	text-align: center; 
-	height: 100%;	
-}
-
-.menubar td {
-	width: 50%;	
-}
-
-.menubar td table {
-	font-size: 16px;
-	text-align: center;
-	width: 100%;
-}
-
-.menubar td table tr {
-	vertical-align: top;
-}
-
-.menubar table td h3 {
-	padding-top: 25%;
-}
-
 img.splash {
 	position: absolute;
 	position: fixed;
@@ -108,7 +79,7 @@ img.splash {
 }
 
 section.description {
-	background-color: #333333;
+	background-color: #dddddd;
 }
 section.description .title {
 	text-align: center;
@@ -124,8 +95,6 @@ section.description table td {
 }
 
 section.nav {
-	/*bottom: 0;*/
-	/*position: absolute;*/
 	left: 35%;
 }
 
@@ -182,6 +151,79 @@ section.nav ul {
 
 
 
+/* OTHER PAGES other than homepage */
+
+.menubar table {
+	color: white;
+	text-align: center; 
+	height: 100%;	
+}
+
+.menubar table tr td{
+	font-size: 20px;
+	color: white;
+	text-align: center; 
+	height: 100%;	
+}
+
+.menubar td {
+	width: 50%;	
+}
+
+.menubar td table {
+	font-size: 16px;
+	text-align: center;
+	width: 100%;
+}
+
+.menubar td table tr {
+	vertical-align: top;
+}
+
+.menubar table td h3 {
+	padding-top: 25%;
+}
+
+
+
+/* GLOBAL COMPONENTS */
+
+.card {
+	background-color: white;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
+	padding: 30px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+button {
+	border: none;
+
+	background-color: #188fff;
+	box-shadow: 0 2px #0961ff;
+
+	color: white;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 10px 20px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+
+button:hover {
+	background-color: #0bafff;
+}
+
+input {
+	border: none;
+	border-bottom: 1px solid #dddddd;
+}
+
+
+
+
 /* LOGIN PAGE */
 
 .login {
@@ -190,10 +232,16 @@ section.nav ul {
 }
 
 .login input {
-	font-size: 150%;
+	font-size: 16px;
 }
 
-.login button {
+.login.menubar {
+	width: 30%;
+	margin: 0 auto;
+	padding-top: 40px;
+}
+
+/*.login button {
 	color: #ffffff;
 	background-color: transparent;
     text-align: center;	
@@ -205,7 +253,6 @@ section.nav ul {
 	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 	border: solid white 2px;
-	font-family: Arial Rounded MT Bold;
 }
 
 .login button:hover {
@@ -228,7 +275,7 @@ section.nav ul {
 	font-size: 16px;
 	padding: 10px 20px 10px 20px;
 	opacity: 0.8;	
-}
+}*/
 
 
 
