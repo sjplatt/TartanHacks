@@ -36,7 +36,7 @@
             <div class="anyauction inline">
             <div class="card">
                 <h1 class="cardtitle">Auction details</h1>
-                <p><span class="field">{{username}}</span> wants
+                <p><span class="field">{{username_a}}</span> wants
                 <span class="field">{{order.split(": ")[-2]}}</span> for
                 <span class="field">${{order.split(": ")[-1]}}</span>
                 from
@@ -48,20 +48,21 @@
             </div>
 
             <div class="anyauction inline">
-            {% if is_self %}
+            
             <div class="card">
+                <h1 class="cardtitle">Make a bid</h1>
                 <form method="post" action="{{ url_for('any_auction',auction_id=aid) }}" class="request">
-                    I will deliver from <select name="location">
+                    I'm at <select name="location">
                     {% for loc in locations %}
                         <option value="{{loc}}">{{loc}}</option>
                     {% endfor %}
                     </select>
-                    for
+                    and will deliver for<br>
                     $<input name="price" type="number" />
                     <button type="submit">Submit</button>
                 </form>
             </div>
-            {% endif %}
+            
 
             <div class="card">
                 {% block content %}
@@ -77,9 +78,9 @@
                         {% if winner != None %}
                             {% if winner[1] == bid[1]%}
                             <tr>
-                                <td style="font-weight:bold">{{bid[0]}}</td>
-                                <td style="font-weight:bold">${{bid[1]}}</td>
-                                <td style="font-weight:bold">{{bid[3]}}</td>
+                                <td class="winner-cell">{{bid[0]}}</td>
+                                <td class="winner-cell">${{bid[1]}}</td>
+                                <td class="winner-cell">{{bid[3]}}</td>
                                 </tr>
                             {% else %}
                             <tr>
