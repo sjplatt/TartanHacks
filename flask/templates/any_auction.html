@@ -49,6 +49,7 @@
 
             <div class="anyauction inline">
             
+            {% if is_self %}
             <div class="card">
                 <h1 class="cardtitle">Make a bid</h1>
                 <form method="post" action="{{ url_for('any_auction',auction_id=aid) }}" class="request">
@@ -58,10 +59,11 @@
                     {% endfor %}
                     </select>
                     and will deliver for<br>
-                    $<input name="price" type="number" />
-                    <button type="submit">Submit</button>
+                    $<input name="price" type="number" /><br>
+                    <button type="submit" style="margin-top: 20px; margin-bottom: -20px;">Submit</button>
                 </form>
             </div>
+            {% endif %}
             
 
             <div class="card">
