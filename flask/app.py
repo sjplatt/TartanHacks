@@ -101,11 +101,14 @@ def auction_list():
     auctionList = []
     image = api.get_user_image(session['user_logged_in'])
     image_map = api.user_image_map()
-
+    time_list = []
     for auctionID in api.get_all_active():
-        auctionList.append([auctionID] + api.get_info_auction(auctionID))
+        info = api.get_info_auction(auctionID)
+        time_list.append(api.time_dif(info))
+        auctionList.append([auctionID] + info)
     return render_template('auction_list.html', auctionList=auctionList,
-        image=image,image_map=image_map,username=session['user_logged_in'])
+        image=image,image_map=image_map,username=session['user_logged_in'],
+        time_list=time_list)
 
 
 @app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
