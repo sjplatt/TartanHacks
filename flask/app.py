@@ -106,7 +106,7 @@ def any_auction(auction_id):
     bids = api.get_bids(auction_id)
     return render_template('any_auction.html',username=username,
         order=auction_info[1],location=auction_info[5],aid=auction_id,
-        bids=bids,is_self=is_self)
+        bids=bids,is_self=is_self,locations=api.get_location_list())
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
