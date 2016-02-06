@@ -126,6 +126,8 @@ def any_auction(auction_id):
         winner = api.get_winner(auction_id)
 
         timeleft = api.time_dif(auction_info)
+        api.check_current_auctions()
+        print(winner)
         return render_template('any_auction.html',username=username,
             order=auction_info[1],location=auction_info[5],aid=auction_id,
             bids=bids,is_self=is_self,locations=locations,
