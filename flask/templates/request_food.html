@@ -1,0 +1,8 @@
+{% block content %}
+    {% for rest in restaurants %}
+      <h1> {{rest}}</h1>
+      {% for cat in rest_dict[rest] %}
+        <h1> {{cat}}</h1>
+      {% endfor %}
+    {% endfor %}
+{% endblock %}

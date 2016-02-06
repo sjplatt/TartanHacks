@@ -18,7 +18,7 @@ def writeFile(path, contents):
 
 #Parse restaurant information
 def parse_restaurant(name):
-    read = readFile(name + ".txt")
+    read = readFile("data/" + name + ".txt")
     lines = read.split('\n')
     result = {lines[0] : []}
     cur_cat = lines[0]
@@ -29,7 +29,6 @@ def parse_restaurant(name):
     cur_options = []
 
     for index,line in enumerate(lines[1:]):
-        print(result)
         if line == '':
             skip_line = True
         elif skip_line:
@@ -56,5 +55,11 @@ def parse_restaurant(name):
                 count=0
     return result
 
+def get_restaurants():
+    read = readFile("data/restaurants.txt")
+    lines = read.split('\n')
+    result = []
+    for line in lines:
+        result.append(line)
+    return result
 
-parse_restaurant("Carnegie Mellon Cafe")
