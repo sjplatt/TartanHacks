@@ -7,11 +7,9 @@ app.config['SECRET_KEY'] = 'F34TF$($e34D';
 def home():
     return render_template('index.html')
 
-@app.route('/signup', methods=['POST'])
-def signup():
-    session['username'] = request.form['username']
-    session['message'] = request.form['message']
-    return redirect('message')
+@app.route('/signin', methods=['GET'])
+def signin():
+    return render_template('signin.html')
 
 @app.route('/message')
 def message():
@@ -19,6 +17,7 @@ def message():
         return abort(403)
     return render_template('message.html', username=session['username'], 
                                            message=session['message'])
+
 
 if __name__ == '__main__':
     app.run()
