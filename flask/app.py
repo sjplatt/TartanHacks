@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
 import api
 from scottylabparser import *
+import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'F34TF$($e34D';
@@ -39,7 +40,10 @@ def signup():
         session['logged_in'] = True
         session['user_logged_in'] = username
         writeFile('data/users.txt', '%s\n' % (username))
-        writeFile('data/%s.txt' % (username), 'password:%s' % password)
+        writeFile('data/%s.txt' % (username), 'password:%s\n' % password)
+        rand = random.randint(1,5)
+        writeFile('data/%s.txt' % (username), 
+            'image:%s' % "image"+str(rand)+".jpg")
         return redirect(url_for('request_food'))
     return render_template('signup.html')
 
