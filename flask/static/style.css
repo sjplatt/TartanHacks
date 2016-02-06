@@ -70,12 +70,15 @@ section.splash {
 	color: white;
 }
 
-img.splash {
+img.splash, .splash-overlay {
 	position: absolute;
 	position: fixed;
 	left: 0;
 	top: 0;
 	z-index: -1000;
+}
+img.splash.light {
+	opacity: 0.7;
 }
 
 section.description {
@@ -183,6 +186,8 @@ section.nav ul {
 .menubar table td h3 {
 	padding-top: 25%;
 }
+
+
 
 
 
