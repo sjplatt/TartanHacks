@@ -57,6 +57,13 @@
         <button type="submit">Create auction</button>
       </form>
 
+      <style>
+        select.categories,
+        select.items {
+          display: none;
+        }
+      </style>
+
       <script>
         var restaurant_selector = $("select.restaurants");
         var category_selector = $("select.categories");
@@ -66,7 +73,7 @@
 
         var hide_stuff = function(elem) {
           elem.hide();
-          elem.children("option").hide().prop("selected",false);;
+          elem.children("option").hide().prop("selected",false);
           elem.children("option[value='"+none+"']").show().prop("selected",true);
         }
         var show_stuff = function(elem, classname) {
