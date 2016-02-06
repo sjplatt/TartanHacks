@@ -34,10 +34,10 @@ def request_food():
 def signup():
     error = None
     if request.method == 'POST':
-        session['logged_in'] = True
-        session['user_logged_in'] = username
         username = request.form['username']
         password = request.form['password']
+        session['logged_in'] = True
+        session['user_logged_in'] = username
         writeFile('data/users.txt', '%s\n' % (username))
         writeFile('data/%s.txt' % (username), 'password:%s' % password)
         return redirect(url_for('request_food'))
