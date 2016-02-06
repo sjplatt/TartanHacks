@@ -14,7 +14,7 @@
         </header>
         <section class = "menubar">
             <h1 class = "menubartitle">Log In</h1>
-            <form method="post" action="{{ url_for('login') }}" class = "login">
+            <form method="post" action="{{ url_for('login',chose_id=chose_id) }}" class = "login">
                 <p><input type="text" name="username" required placeholder="Username"></p>
                 <p><input type="text" name="password" required placeholder="Password"></p>
                 <button type="submit">Enter</button>

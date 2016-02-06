@@ -43,9 +43,10 @@ def signup():
         return redirect(url_for('request_food'))
     return render_template('signup.html')
 
-@app.route('/login', methods = ['GET','POST'])
-def login():
+@app.route('/login/<chose_id>', methods = ['GET','POST'])
+def login(chose_id):
     error = None
+    session['chose_id'] = chose_id
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -68,12 +69,15 @@ def login():
             if passwordHash == (password):
                 session['logged_in'] = True
                 session['user_logged_in'] = username
-                return redirect(url_for('request_food'))
+                if session['chose_id'] == 0:
+                    return redirect(url_for('request_food'))
+                else:
+                    return direct(url_for(''))
             else:
                 error = 'Invalid password'
         else:
             error = 'Invalid username'
-    return render_template('login.html')
+    return render_template('login.html',chose_id=chose_id)
 
 @app.route('/my_auction',methods = ['POST'])
 def my_auction():
