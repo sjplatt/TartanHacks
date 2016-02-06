@@ -74,11 +74,27 @@
                         <th>Delivering from</th>
                     </tr>
                     {% for bid in bids %}
-                        <tr>
+                        {% if winner != None %}
+                            {% if winner[1] == bid[1]%}
+                            <tr>
+                                <td style="font-weight:bold">{{bid[0]}}</td>
+                                <td style="font-weight:bold">${{bid[1]}}</td>
+                                <td style="font-weight:bold">{{bid[3]}}</td>
+                                </tr>
+                            {% else %}
+                            <tr>
                             <td>{{bid[0]}}</td>
                             <td>${{bid[1]}}</td>
                             <td>{{bid[3]}}</td>
-                        </tr>
+                            </tr>
+                           {%endif%}
+                         {% else %}
+                            <tr>
+                            <td>{{bid[0]}}</td>
+                            <td>${{bid[1]}}</td>
+                            <td>{{bid[3]}}</td>
+                        {% endif %}
+                    </tr>
                     {% endfor %}
                 </table>
                 {% endblock %}
