@@ -1,42 +1,69 @@
-{% block content %}
-<table class="bids">
-    <p>Opens</p>
-    <tr>
-         <td>Auction ID</td>
-        <td>Auction username</td>
-        <td>Auction Offer </td>
-        <td>Auction location</td>
-    </tr>
-    {% for open in op %}
-        <tr>
-            <td>{{open[0]}}</td>
-            <td>{{open[1]}}</td>
-            <td>{{open[2]}}</td>
-            <td>{{open[3]}}</td>
-        </tr>
-    {% endfor %}
-</table>
-<table class = "closed">
-    <p>Closed</p>
-    <tr>
-        <td>Auction ID</td>
-        <td>Auction username</td>
-        <td>Auction Offer </td>
-        <td>Auction location</td>
-        <td>Winner ID </td>
-        <td> Winner Offer</td>
-        <td> Winner Location</td>
-    </tr>
-    {% for close in closed %}
-        <tr>
-            <td>{{close[0]}}</td>
-            <td>{{close[1]}}</td>
-            <td>{{close[2]}}</td>
-            <td>{{close[6]}}</td>
-            <td>{{winner_map[close[0]][0]}}</td>
-            <td>{{winner_map[close[0]][1]}}</td>
-            <td>{{winner_map[close[0]][3]}}</td>
-        </tr>
-    {% endfor %}
-                        {% endblock %}
-</table>
+<html>
+    <head>
+        <title>title</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
+    </head>
+    <body>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+                <span class = "accounticon">
+                    <a href = "{{url_for('my_account')}}">
+                    <img src = "{{url_for('static', filename = image)}}">
+                    {{username}}
+                    </a>
+                </span>
+            </div>
+        </header>
+        <section class = "menubar">
+            <h1 class = "menubartitle">My Account</h1>            
+            {% block content %}
+            <table class="bids">
+                <h2>Opens</h2>
+                <tr>
+                    <td>Auction ID</td>
+                    <td>Auction username</td>
+                    <td>Auction Offer </td>
+                    <td>Auction location</td>
+                </tr>
+                {% for open in op %}
+                    <tr>
+                        <td>{{open[0]}}</td>
+                        <td>{{open[1]}}</td>
+                        <td>{{open[2]}}</td>
+                        <td>{{open[3]}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <table class = "closed">
+                <h2>Closed</h2>
+                <tr>
+                    <td>Auction ID</td>
+                    <td>Auction username</td>
+                    <td>Auction Offer </td>
+                    <td>Auction location</td>
+                    <td>Winner ID </td>
+                    <td> Winner Offer</td>
+                    <td> Winner Location</td>
+                </tr>
+                {% for close in closed %}
+                    <tr>
+                        <td>{{close[0]}}</td>
+                        <td>{{close[1]}}</td>
+                        <td>{{close[2]}}</td>
+                        <td>{{close[6]}}</td>
+                        <td>{{winner_map[close[0]][0]}}</td>
+                        <td>{{winner_map[close[0]][1]}}</td>
+                        <td>{{winner_map[close[0]][3]}}</td>
+                    </tr>
+                {% endfor %}
+                                    {% endblock %}
+            </table>
+        </section>
+    </body>
+</html>

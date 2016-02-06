@@ -11,52 +11,67 @@
                     FUBER
                 </a>
                 </span>
-                <span>
-                    <img src = "{{url_for('static', filename = image)}}">{{username}}
+                <span class = "accounticon">
+                    <a href = "{{url_for('my_account')}}">
+                    <img src = "{{url_for('static', filename = image)}}">
+                    {{username}}
+                    </a>
                 </span>
             </div>
         </header>
-        <section class = "menubar">
-        <h1 class = "menubartitle">Auction</h1>
-        <p class="username">Username: {{username}}</p>
-        <p class="order">Order: {{order}}</p>
-        <p class="location">Location: {{location}}</p>
 
-        <div class="map">Map placeholder</div>
+        <section class="menubar">
+            <div class="anyauction inline">
+            <div class="card">
+                <h1 class="cardtitle">Auction details</h1>
+                <p><span class="field">{{username}}</span> wants
+                <span class="field">{{order.split(": ")[-2]}}</span> for
+                <span class="field">${{order.split(": ")[-1]}}</span>
+                from
+                <span class="field">{{order.split(": ")[0]}}</span> in
+                <span class="field">{{location}}.</span></p>
+                
+                <p>There {{"is" if time_left==1 else "are"}} <span class="field">{{time_left}}</span> {{"minute" if time_left==1 else "minutes"}} left to bid.</p>
+            </div>
+            </div>
 
-        {% block content %}
-        <h3>Bids</h3>
+            <div class="anyauction inline">
+            {% if is_self %}
+            <div class="card">
+                <form method="post" action="{{ url_for('any_auction',auction_id=aid) }}" class="request">
+                    I will deliver from <select name="location">
+                    {% for loc in locations %}
+                        <option value="{{loc}}">{{loc}}</option>
+                    {% endfor %}
+                    </select>
+                    for
+                    $<input name="price" type="number" />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            {% endif %}
 
-        {% if is_self %}
-        <form method="post" action="{{ url_for('any_auction',auction_id=aid) }}" class="request">
-            I will deliver from <select name="location">
-            {% for loc in locations %}
-                <option value="{{loc}}">{{loc}}</option>
-            {% endfor %}
-            </select>
-            for
-            $<input name="price" type="number" />
-            <button type="submit">Submit</button>
-        </form>
-        {% endif %}
+            <div class="card">
+                {% block content %}
+                <h1 class="cardtitle">Active bids</h1>
 
-        <table class="bids">
-            <tr>
-                <th>Username</th>
-                <th>Price</th>
-                <th>Timestamp</th>
-                <th>Location</th>
-            </tr>
-            {% for bid in bids %}
-                <tr>
-                    <td>{{bid[0]}}</td>
-                    <td>{{bid[1]}}</td>
-                    <td>{{bid[2]}}</td>
-                    <td>{{bid[3]}}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        {% endblock %}
+                <table class="bids">
+                    <tr>
+                        <th>Deliverer</th>
+                        <th>Delivery fee</th>
+                        <th>Delivering from</th>
+                    </tr>
+                    {% for bid in bids %}
+                        <tr>
+                            <td>{{bid[0]}}</td>
+                            <td>${{bid[1]}}</td>
+                            <td>{{bid[3]}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% endblock %}
+            </div>
+            </div>
         </section>
     </body>
 </html>
