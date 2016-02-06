@@ -91,11 +91,9 @@ def my_auction():
 @app.route('/auction_list', method = ['GET'])
 def auction_list():
     auctionList = []
+    for auctionID in api.get_location_list():
+        auctionList.append(get_info_auction(auctionID))
     return render_template('auction_list.html', auctionList)
-
-@app.details('/auction_details', methods = ['POST'])
-def auction_details():
-    return render_template('auction_details.html')
 
 
 # @app.route('/message')
