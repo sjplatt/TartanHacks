@@ -12,12 +12,23 @@
         <div class="map">Map placeholder</div>
 
         <h3>Bids</h3>
-        <!-- <div class="bids">
+        <table class="bids">
+            <tr>
+                <th>Username</th>
+                <th>Price</th>
+                <th>Timestamp</th>
+                <th>Location</th>
+            </tr>
             {% block content %}
             {% for bid in bids %}
-                <p>{{bid[0]}}, {{bid[1]}}, {{bid[2]}}, {{bid[3]}}</p>
+                <tr>
+                    <td>{{bid[0]}}</td>
+                    <td>{{bid[1]}}</td>
+                    <td>{{bid[2]}}</td>
+                    <td>{{bid[3]}}</td>
+                </tr>
             {% endfor %}
             {% endblock %}
-        </div> -->
+        </table>
     </body>
 </html>
