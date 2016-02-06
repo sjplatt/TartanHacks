@@ -85,6 +85,16 @@ def my_auction():
     #print(restaurant,category,item,auction_length,location)
     return render_template('my_auction.html')
 
+@app.route('/auction_list', method = ['GET'])
+def auction_list():
+    auctionList = []
+    return render_template('auction_list.html', auctionList)
+
+@app.details('/auction_details', methods = ['POST'])
+def auction_details():
+    return render_template('auction_details.html')
+
+
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
