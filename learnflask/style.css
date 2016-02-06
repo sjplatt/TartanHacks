@@ -1,0 +1,61 @@
+a:link, a:visited {
+    color: black;
+    text-align: center;	
+    text-decoration: none;
+    display: inline-block;
+}
+
+.title {
+	text-align: center;
+	font-size: xx-large;
+}
+
+.login {
+	position: absolute; 
+	top: 2%;
+	right: 2%;
+	text-align: center;
+}
+
+
+.menuoption {
+	position: relative;
+	left: 10%;
+	top: 10%;
+	height: 100%;
+} 
+
+.tableoption {
+	width: 100%;
+	height: 60%;
+	border: 2px solid black;
+	text-align: center;
+	font-size: xx-large;
+}
+
+.tableoption td {
+}
+
+.nav {
+	bottom: 0;
+	position: absolute;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.nav li {
+    float: left;
+}
+
+.nav li a {
+    display: inline-block;
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+}
