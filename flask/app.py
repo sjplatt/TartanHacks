@@ -145,8 +145,9 @@ def my_account():
     for close in closed:
         winner_for_close[close[0]] = api.get_winner(close[0])
     bids = []
+    image = api.get_user_image(session['user_logged_in'])
     return render_template('myaccount.html',op=op,closed=closed,bids=bids,
-        winner_map=winner_for_close)
+        winner_map=winner_for_close,image=image)
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
