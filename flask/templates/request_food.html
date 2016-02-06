@@ -5,57 +5,74 @@
         <script src="{{ url_for('static', filename='jquery-2.2.0.min.js') }}"></script>
     </head>
     <body>
+        <header class = "title">
+            <h1>
+            <a href="{{ url_for('home') }}">
+                FUBER
+            </a>
+            </h1>
+        </header>
+        <section class = "menubar">
+        <h1 class = "menubartitle">Request Food</h1>
+        {% block content %}
+          <form method="post" action="{{ url_for('my_auction') }}" class = "request">
+            <select class="restaurants" name="restaurant">
+              <option value="NONE" selected>Select a restaurant</option>
+              {% for rest in restaurants %}
+                <option value="{{rest}}">{{rest}}</option>
+              {% endfor %}
+            </select>
 
-    {% block content %}
+            <select class="categories" name="category">
+              <option value="NONE" selected>Select a category</option>
+              {% for rest in restaurants %}
+              {% for cat in rest_dict[rest] %}
+                <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{cat}}">{{cat}}</option>
+              {% endfor %}
+              {% endfor %}
+            </select>
 
-      <form method="post" action="{{ url_for('request_food') }}">
-        <select class="restaurants" name="restaurant">
-          <option value="NONE" selected>Select a restaurant</option>
-          {% for rest in restaurants %}
-            <option value="{{rest}}">{{rest}}</option>
-          {% endfor %}
-        </select>
+            <select class="items" name="item">
+              <option value="NONE" selected>Select an item</option>
+              {% for rest in restaurants %}
+              {% for cat in rest_dict[rest] %}
+              {% for item in rest_dict[rest][cat] %}
+                <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}},{{item.price}}">{{item.name}}: ${{item.price}}</option>
+              {% endfor %}
+              {% endfor %}
+              {% endfor %}
+            </select>
 
-        <select class="categories" name="category">
-          <option value="NONE" selected>Select a category</option>
-          {% for rest in restaurants %}
-          {% for cat in rest_dict[rest] %}
-            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{cat}}">{{cat}}</option>
-          {% endfor %}
-          {% endfor %}
-        </select>
+            <br>
+            Auction length: <select name="auction_length">
+              <option value="5">5 min</option>
+              <option value="10">10 min</option>
+              <option value="15">15 min</option>
+              <option value="20">20 min</option>
+              <option value="25">25 min</option>
+              <option value="30">30 min</option>
+            </select>
 
-        <select class="items" name="item">
-          <option value="NONE" selected>Select an item</option>
-          {% for rest in restaurants %}
-          {% for cat in rest_dict[rest] %}
-          {% for item in rest_dict[rest][cat] %}
-            <option class="{{rest.replace(' ','-').replace('\'','-').replace('&','-')}} {{cat.replace(' ','-').replace('\'','-').replace('&','-')}}" value="{{item.name}},{{item.price}}">{{item.name}}: ${{item.price}}</option>
-          {% endfor %}
-          {% endfor %}
-          {% endfor %}
-        </select>
+            <br>
+            Location to deliver to: <select name="location">
+              {% for loc in locations %}
+                <option value="{{loc}}">{{loc}}</option>
+              {% endfor %}
+            </select>
 
-        <br>
-        Auction length: <select name="auction_length">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-          <option value="25">25</option>
-          <option value="30">30</option>
-        </select>
+            <br>
+            <button type="submit">Create auction</button>
+          </form>
 
-        <br>
-        Location to deliver to: <select name="location">
-          {% for loc in locations %}
-            <option value="{{loc}}">{{loc}}</option>
-          {% endfor %}
-        </select>
-
-        <br>
-        <button type="submit">Create auction</button>
-      </form>
+        </section>
+        
+        <div class = "nav">
+            <ul>
+              <li><a href="url">Home</a></li>
+                <li><a href="url">About</a></li>
+                <li><a href="url">Contact Us</a></li>
+            </ul>
+        </div>
 
       <style>
         select.categories,
