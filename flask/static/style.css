@@ -152,6 +152,10 @@ select {
     background-color: transparent;
 }
 
+option {
+	color: black;
+}
+
 .request button {
 	color: #ffffff;
 	background-color: transparent;
