@@ -98,6 +98,28 @@ img.splash.light {
 }
 .splash-overlay {
 	background-color: black;
+
+/*.menubar table {
+	color: white;
+	text-align: center; 
+	height: 100%;	
+}
+
+.menubar table tr td{
+	font-size: 20px;
+	color: white;
+	text-align: center; 
+	height: 100%;	
+}
+
+.menubar td {
+	width: 50%;	
+}
+
+.menubar td table {
+	font-size: 16px;
+	text-align: center;
+>>>>>>> 78a29dda9f196bbe53a52059a1d681dc89f9b8d5
 	width: 100%;
 	height: 100%;
 	z-index: -999;
