@@ -90,8 +90,7 @@ def my_auction():
 
 @app.route('/any_auction/<auction_id>',methods = ['GET'])
 def any_auction(auction_id):
-    auction_id = str(0) #NEEED TO CHANGE NEED TO CHANGE 
-    auction_info = get_info_auction(auction_id)
+    auction_info = api.get_info_auction(auction_id)
     is_self = False
     if auction_info[0] == session['user_logged_in']:
         is_self = True
