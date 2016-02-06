@@ -88,6 +88,18 @@ def my_auction():
     bids = api.get_bids(aid)
     return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids)
 
+@app.route('/any_auction/<auction_id>',methods = ['GET'])
+def any_auction(auction_id):
+    auction_id = str(0) #NEEED TO CHANGE NEED TO CHANGE 
+    auction_info = get_info_auction(auction_id)
+    is_self = False
+    if auction_info[0] == session['user_logged_in']:
+        is_self = True
+    username = auction_info[0]
+    bids = api.get_bids(auction_id)
+    return render_template('any_auction.html',username=username,
+        order=auction_info[1],location=auction_info[5],aid=auction_id,
+        bids=bids,is_self=is_self)
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
