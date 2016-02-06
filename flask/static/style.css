@@ -2,26 +2,66 @@ a {
 	text-decoration: none;
 }
 
-body {
-	font-family: "Arial Rounded MT Bold";
-	background-image: url("bgimage.jpg");
-	background-image: no-repeat;
-	margin: 0;
+@font-face {
+	font-family: "Overpass";
+	font-weight: normal;
+	src: url("Overpass-Regular.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Overpass";
+	font-weight: bold;
+	src: url("Overpass-Bold.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Overpass";
+	font-weight: 300;
+	src: url("Overpass-Light.ttf") format("truetype");
 }
 
-.title {
-	margin-top: 2%;
-	text-align: center;
-	font-size: xx-large;
+body {
+	font-family: "Overpass", Arial Rounded MT Bold, Arial;
+	margin: 0;
+	color: white;
+	background-color: black;
+}
+
+header {
+	font-weight: bold;
+	padding: 10px 0;
+	height: 80px;
+	width: 100%;
 	background-color: rgba(0,0,0,0.4);
 }
 
-.title a, a:visited {
+header div {
+	height: 100%;
+	padding: 0 10%;
+}
+
+header a, a:visited {
 	text-decoration: none;
 	color: white;
 }
 
-.menubar {
+header .title {
+	font-size: 44px;
+	margin-top: 10px;
+	float: left;
+}
+
+
+
+
+
+
+/* HOMEPAGE */
+
+section {
+	padding: 0 15%;
+}
+
+section.splash {
+	padding: 0;
 	opacity: 0.9;
 	height: 320px;	
 	font-size: 16px;
@@ -59,6 +99,7 @@ body {
 	padding-top: 25%;
 }
 
+<<<<<<< HEAD
 .menubar p {
 	text-align: center;
 }
@@ -66,8 +107,45 @@ body {
 .menubartitle {
 	font-size: 250%;
 	color: #ffffff;
+=======
+img.splash {
+	position: absolute;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: -1000;
+}
+
+section.description {
+	background-color: #333333;
+}
+section.description .title {
+>>>>>>> f9da06695ec7ba1c416601deb131c73d12f0cf1a
 	text-align: center;
-	margin-bottom: 25px;
+	padding-top: 1em;
+	font-size: 30px;
+}
+section.description table {
+	padding: 50px 0;
+	width: 100%;
+}
+section.description table td {
+	width: 50%;
+}
+
+section.nav {
+	/*bottom: 0;*/
+	/*position: absolute;*/
+	left: 35%;
+}
+
+section.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    overflow: hidden;
+    font-size: 150%;
 }
 
 .tableoption {
@@ -86,6 +164,7 @@ body {
 
 .tableoption a {
 	color: #ffffff;
+	font-weight: 300;
     text-align: center;	
     text-decoration: none;
     display: inline-block;
@@ -98,15 +177,6 @@ body {
 }
 
 .tableoption a:hover {
-	color: #ffffff;
-    text-align: center;	
-    text-decoration: none;
-    display: inline-block;
-	-webkit-border-radius: 12;
-	-moz-border-radius: 12;
-	border-radius: 12px;
-	font-size: 32px;
-	padding: 10px 20px 10px 20px;
 	opacity: 0.8;
 }
 
@@ -117,6 +187,12 @@ body {
 .signinoption input {
 	font-size: 80%;
 }
+
+
+
+
+
+/* LOGIN PAGE */
 
 .login {
 	width: 100%;
@@ -164,20 +240,12 @@ body {
 	opacity: 0.8;	
 }
 
-.nav {
-	bottom: 0;
-	position: absolute;
-	left: 35%;
-}
 
-.nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    bottom: 0;
-    overflow: hidden;
-    font-size: 150%;
-}
+
+
+
+
+/* REQUEST FOOD PAGE */
 
 .request {
 	text-align: center;
