@@ -1,6 +1,6 @@
-asdf
-Carnegie Mellon Cafe: Ice Cream Sundaes: Banana Split Royale: 7.29
-7.29
-17:37:20.074835
-5
+test
+The Underground: Pasta: Pasta Alfredo: 6.25
+6.25
+17:24:52.137571
+20
 resnick
