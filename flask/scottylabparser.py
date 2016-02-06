@@ -29,6 +29,22 @@ def restaurant_dict(name):
             return loc
             break
 
+def special_restaurant_dict():
+    data = parse_original()
+    result = {}
+    for rest in data:
+        arr = ["Closed"]*7
+        times = rest['times']
+        for time in times:
+            start = time['start']
+            end = time['end']
+            index = start['day']
+
+            string = str(start['hour']) + ":" +str(start['min']) + " - " + str(end['hour']) + ":" +str(end['min'])
+            arr[index] = string
+        result[rest['name']] = arr
+    return result
+
 def restaurant_location(loc):
     return loc['location']
 
