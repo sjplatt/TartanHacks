@@ -324,6 +324,9 @@ table.bids td, table.bids th {
 	padding: 10px;
 }
 
+.winner-cell {
+	background-color: rgba(24,143,255,0.5);;
+}
 
 
 
