@@ -4,6 +4,7 @@ a {
 
 body {
 	font-family: Arial Rounded MT Bold;
+	background-image: url("bgimage.jpg");
 }
 
 .title {
@@ -14,15 +15,12 @@ body {
 
 .title a, a:visited {
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 .menubar {
-	background-image: url("indeximage.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
 	opacity: 0.9;
-	height: 320px;
+	height: 320px;	
 }
 
 .menubartitle {
@@ -181,7 +179,7 @@ option {
 
 .nav li a {
     display: inline-block;
-    color: black;
+    color: white;
     padding: 14px 16px;
     text-decoration: none;
 }
