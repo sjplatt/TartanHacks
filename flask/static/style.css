@@ -81,7 +81,7 @@ img.splash.light {
 	opacity: 0.7;
 }
 
-.menubar table {
+/*.menubar table {
 	color: white;
 	text-align: center; 
 	height: 100%;	
@@ -110,7 +110,7 @@ img.splash.light {
 
 .menubar table td h3 {
 	padding-top: 25%;
-}
+}*/
 
 
 section.description {
@@ -187,8 +187,11 @@ section.nav ul {
 
 
 /* OTHER PAGES other than homepage */
+.menubar {
+	margin: 0 auto;
+}
 
-.menubar table {
+/*.menubar table {
 	color: white;
 	text-align: center; 
 	height: 100%;	
@@ -217,7 +220,7 @@ section.nav ul {
 
 .menubar table td h3 {
 	padding-top: 25%;
-}
+}*/
 
 
 
@@ -228,10 +231,16 @@ section.nav ul {
 .card {
 	background-color: white;
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.3);
-	padding: 30px;
+	padding: 20px 30px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
+	margin-top: 40px;
+}
+.card .cardtitle {
+	font-weight: 700;
+	margin: 0;
+	margin-bottom: 5px;
 }
 
 button {
@@ -259,6 +268,20 @@ input {
 	border-bottom: 1px solid #dddddd;
 }
 
+hr {
+	border: none;
+	border-bottom: 1px solid #dddddd;
+	margin: 20px 0;
+}
+
+span.field {
+	font-weight: bold;
+}
+
+.inline {
+	display: inline-block;
+}
+
 
 
 
@@ -275,45 +298,48 @@ input {
 
 .login.menubar {
 	width: 30%;
-	margin: 0 auto;
-	padding-top: 40px;
 }
 
-/*.login button {
-	color: #ffffff;
-	background-color: transparent;
-    text-align: center;	
-    text-decoration: none;
-    display: inline-block;
-	-webkit-border-radius: 12;
-	-moz-border-radius: 12;
-	border-radius: 12px;
-	font-size: 16px;
-	padding: 10px 20px 10px 20px;
-	border: solid white 2px;
+
+
+
+/* ANY AUCTION PAGE */
+.anyauction.inline {
+	width: 45%;
+	vertical-align: top;
+}
+.anyauction.inline:first-child {
+	float: left;
+}
+.anyauction.inline:last-child {
+	float: right;
 }
 
-.login button:hover {
-	opacity: 0.8;
+table.bids {
+	margin-top: 20px;
+	color: black;
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
 }
 
-.login button a{
-	color: #ffffff;
-	-webkit-border-radius: 12;
-	-moz-border-radius: 12;
-	border-radius: 12px;
-	font-size: 16px;
-	padding: 10px 20px 10px 20px;
-}
-
-.login button:hover a{
-	-webkit-border-radius: 12;
-	-moz-border-radius: 12;
-	border-radius: 12px;
-	font-size: 16px;
-	padding: 10px 20px 10px 20px;
-	opacity: 0.8;	
+/*table.bids tr:nth-child(odd) {
+	background-color: rgba(24,143,255,0.15);
 }*/
+table.bids tr:first-child * {
+	text-align: left;
+	padding: 0 10px;
+}
+table.bids tr {
+	border-bottom: 1px solid #cccccc;
+}
+table.bids tr:last-child {
+	border-bottom: none;
+}
+
+table.bids td, table.bids th {
+	padding: 10px;
+}
 
 
 
