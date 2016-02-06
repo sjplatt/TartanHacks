@@ -73,6 +73,14 @@ def get_restaurants():
 
 ######MAIN API#############
 
+def time_dif(auc):
+    ts = parser.parse(auc[3])+datetime.timedelta(minutes=int(auc[4]))
+    cur_time = datetime.datetime.now()
+    if ts > cur_time:
+        delt = ts-cur_time
+        return delt.seconds
+    else: return 0
+
 def find_highest_offset():
     res = []
     for file in os.listdir("./data/bidding"):
