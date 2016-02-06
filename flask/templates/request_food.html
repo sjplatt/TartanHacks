@@ -83,12 +83,13 @@
 
         var hide_stuff = function(elem) {
           elem.hide();
-          elem.children("option").hide();
-          elem.children("option[value='"+none+"']").show();
+          elem.children("option").hide().prop("selected",false);;
+          elem.children("option[value='"+none+"']").show().prop("selected",true);
         }
         var show_stuff = function(elem, classname) {
           elem.show();
           elem.children(classname).show();
+          elem.children("option[value='"+none+"']").show().prop("selected",true);
         }
         var classname_from_val = function(val) {
           return val.replace(/[ -'&]/g, '-');
@@ -109,6 +110,7 @@
             hide_stuff(item_selector);
           }
           else {
+            hide_stuff(category_selector);
             show_stuff(category_selector, "option."+selected_restaurant_classname);
           }
         });
@@ -121,6 +123,7 @@
             hide_stuff(item_selector);
           }
           else {
+            hide_stuff(item_selector);
             show_stuff(item_selector, "option."+selected_restaurant_classname+"."+selected_category_classname);
             console.log(selected_restaurant_classname + " " + selected_category_classname);
           }

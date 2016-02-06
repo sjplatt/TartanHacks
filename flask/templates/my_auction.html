@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>title</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+    </head>
+    <body>
+        <h1>My Auction</h1>
+        <p class="username">Username: {{username}}</p>
+        <p class="order">Order: {{order}}</p>
+        <p class="location">Location: {{location}}</p>
+
+        <div class="map">Map placeholder</div>
+
+        <h3>Bids</h3>
+        <div class="bids">
+            {% block content %}
+            {% for bid in bids %}
+                <p>{{bid[0]}}, {{bid[1]}}, {{bid[2]}}, {{bid[3]}}</p>
+            {% endfor %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
