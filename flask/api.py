@@ -83,6 +83,7 @@ def find_highest_offset():
     return max(res)+1
 
 def create_auction(userid, order, price, wait, loc):
+    print("START")
     timestamp = datetime.datetime.time(datetime.datetime.now())
     output = ""
     output+=str(userid) + "\n"
@@ -93,7 +94,6 @@ def create_auction(userid, order, price, wait, loc):
     output+=str(loc) + "\n"
 
     offset = find_highest_offset()
-
     writeFile("./data/bidding/auction"+str(offset)+".txt",output)
     add_to_current_auctions(offset)
     return offset
