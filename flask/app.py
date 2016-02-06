@@ -88,7 +88,7 @@ def my_auction():
     bids = api.get_bids(aid)
     return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids)
 
-@app.route('/auction_list', method = ['GET'])
+@app.route('/auction_list', methods = ['GET'])
 def auction_list():
     auctionList = []
     for auctionID in api.get_location_list():
