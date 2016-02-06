@@ -52,14 +52,14 @@ def login():
         checkFile = False
         users = readFile('data/users.txt')
         for user in users.splitlines():
-            print(user, username)
+
             if user ==  username:
                 checkFile = True
                 break
         if checkFile:
             text = readFile('data/%s.txt' % (username))
-            print(text)
-            print(hash(password))
+
+
             for line in text.splitlines():
                 [key, val] = line.split(":")
                 if key == "password":
