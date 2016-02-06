@@ -4,8 +4,15 @@
         <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
     </head>
     <body>
+        <header class = "title">
+            <h1>
+            <a href="{{ url_for('home') }}">
+                FUBER
+            </a>
+            </h1>
+        </header>
         <section class = "menubar">
-        <h1 class = "menubartitle">My Auction</h1>
+        <h1 class = "menubartitle">Auction</h1>
         <p class="username">Username: {{username}}</p>
         <p class="order">Order: {{order}}</p>
         <p class="location">Location: {{location}}</p>
