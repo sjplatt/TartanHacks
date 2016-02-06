@@ -37,10 +37,17 @@
         </select>
 
         <br>
-        <input name="auction_length" type="number"></input>
+        Auction length: <select name="auction_length">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+        </select>
 
         <br>
-        <select name="location">
+        Location to deliver to: <select name="location">
           {% for loc in locations %}
             <option value="{{loc}}">{{loc}}</option>
           {% endfor %}
@@ -48,7 +55,6 @@
 
         <br>
         <button type="submit">Create auction</button>
-          }
       </form>
 
       <script>
