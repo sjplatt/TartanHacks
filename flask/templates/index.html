@@ -12,7 +12,8 @@
             </a>
             </h1>
         </header>
-        <section class = "menubar">
+
+        <section class = "splash">
             <table class = "tableoption">
                 <tr>
                     <td><a href="{{ url_for('login') }}">Get Food For Someone</a></td>
@@ -27,5 +28,6 @@
                 <li><a href="url">Contact Us</a></li>
             </ul>
         </div>
+        <img class="splash" src="{{ url_for('static', filename='bgimage.jpg') }}">
     </body>
 </html>
