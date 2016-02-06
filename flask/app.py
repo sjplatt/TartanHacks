@@ -27,7 +27,6 @@ def request_food():
     for restaurant in restaurants:
         rest_dict[restaurant] = api.parse_restaurant(restaurant)
     
-    print(rest_dict)
     return render_template('request_food.html', restaurants=restaurants,
         rest_dict=rest_dict)
 

@@ -1,3 +1,7 @@
+import datetime
+import os
+from dateutil import parser
+
 class MenuItem:
     def __init__(self,name,price,options):
         self.name = name
@@ -14,6 +18,10 @@ def readFile(path):
 
 def writeFile(path, contents):
     with open(path, "wt") as f:
+        f.write(contents)
+
+def writeFileAppend(path,contents):
+    with open(path,"at") as f:
         f.write(contents)
 
 #Parse restaurant information
@@ -63,3 +71,74 @@ def get_restaurants():
         result.append(line)
     return result
 
+######MAIN API#############
+
+def find_highest_offset():
+    res = []
+    for file in os.listdir("./data/bidding"):
+        if file.endswith(".txt"):
+            if "auction" in file[:7]:
+                res.append(int(file[7:-4]))
+
+    return max(res)+1
+
+def create_auction(userid, order, price, wait, loc):
+    timestamp = datetime.datetime.time(datetime.datetime.now())
+    output = ""
+    output+=str(userid) + "\n"
+    output+=str(order) + "\n"
+    output+=str(price) + "\n"
+    output+=str(timestamp) + "\n"
+    output+=str(wait) + "\n"
+    output+=str(loc) + "\n"
+
+    offset = find_highest_offset()
+
+    writeFile("./data/bidding/auction"+str(offset)+".txt",output)
+    add_to_current_auctions(offset)
+    return offset
+
+def add_to_current_auctions(id):
+    writeFileAppend("./data/bidding/open_auctions.txt",str(id) + "\n")
+
+def check_current_auctions():
+    res = readFile("./data/bidding/open_auctions.txt").split("\n")
+    keep = []
+    remove = []
+    for line in res:
+        if(line != "" and line != "\n"):
+            auc = readFile("./data/bidding/auction"+line+".txt").split("\n")
+            cur_time = datetime.datetime.now()
+            wait_time = auc[4]
+            timestamp = parser.parse(auc[3])+datetime.timedelta(minutes=int(wait_time))
+            if(timestamp > cur_time):
+                keep.append(line)
+            else: remove.append(line)
+    
+    result = ""
+    for k in keep:
+        result+=k + "\n"
+    writeFile("./data/bidding/open_auctions.txt",result)
+
+    result = ""
+    for r in remove:
+        result+=r + "|\n"
+    writeFileAppend("./data/bidding/closed_auctions.txt",result)
+
+def is_current_auction(id):
+    res = readFile("./data/bidding/open_auctions.txt").split("\n")
+    for line in res:
+        if line == str(id):
+            return True
+    return False
+
+#Form: bid_user:
+def add_bid_to_auction(id, bid_user_id, price):
+    timestamp = datetime.datetime.time(datetime.datetime.now())
+    result = str(bid_user_id) + "|" + str(price) + "|" + str(timestamp) + "\n"
+    writeFileAppend("./data/bidding/auc_bid" + str(id) + ".txt",result)
+
+#add_bid_to_auction(2,"sjplatt","2")
+#create_auction("sjplatt","burrito","6.95","5","resnick")
+#create_auction("sjplatt","burrito","6.95","1","resnick")
+#check_current_auctions()
