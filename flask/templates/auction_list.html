@@ -23,11 +23,16 @@
                 <tr>
             {% block content %}
             {% for auction in auctionList %}
+<<<<<<< HEAD
                 <td>{{auction[1]}}</td> 
                 <td>{{auction[2]}}</td>
                 <td>{{time_list[auction]}}</td>
                 <td>{{auction[6]}}</td>
                 <td><a href="{{ url_for('any_auction', auction_id=auction[0]) }}">BID</a></td>
+=======
+                <p>username {{auction[1]}}, description {{auction[2]}}, location {{auction[6]}}, link <a href="{{ url_for('any_auction', auction_id=auction[0]) }}">asdf</a></p>
+                <p>{{time_list[auction[0]]}}</p>
+>>>>>>> f861cd0e8db3211b02cb3f606bc7225a7102c18d
             {% endfor %}
             {% endblock %}
                 </tr>
