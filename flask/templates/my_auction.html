@@ -2,6 +2,7 @@
     <head>
         <title>title</title>
         <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
     </head>
     <body>
         <h1>My Auction</h1>
@@ -11,6 +12,7 @@
 
         <div class="map">Map placeholder</div>
 
+        {% block content %}
         <h3>Bids</h3>
         <table class="bids">
             <tr>
@@ -19,7 +21,6 @@
                 <th>Timestamp</th>
                 <th>Location</th>
             </tr>
-            {% block content %}
             {% for bid in bids %}
                 <tr>
                     <td>{{bid[0]}}</td>
@@ -28,7 +29,7 @@
                     <td>{{bid[3]}}</td>
                 </tr>
             {% endfor %}
-            {% endblock %}
         </table>
+        {% endblock %}
     </body>
 </html>

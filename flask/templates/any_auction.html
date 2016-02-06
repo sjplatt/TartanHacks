@@ -11,7 +11,20 @@
 
         <div class="map">Map placeholder</div>
 
+        {% block content %}
         <h3>Bids</h3>
+
+        <form method="post" action="{{ url_for('any_auction') }}" class="request">
+            I will deliver from <select name="location">
+            {% for loc in locations %}
+                <option value="{{loc}}">{{loc}}</option>
+            {% endfor %}
+            </select>
+            for
+            $<input name="price" type="number" />
+            <button type="submit">Submit</button>
+        </form>
+
         <table class="bids">
             <tr>
                 <th>Username</th>
@@ -19,7 +32,6 @@
                 <th>Timestamp</th>
                 <th>Location</th>
             </tr>
-            {% block content %}
             {% for bid in bids %}
                 <tr>
                     <td>{{bid[0]}}</td>
@@ -28,7 +40,7 @@
                     <td>{{bid[3]}}</td>
                 </tr>
             {% endfor %}
-            {% endblock %}
         </table>
+        {% endblock %}
     </body>
 </html>

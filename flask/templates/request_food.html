@@ -1,7 +1,8 @@
 <html>
     <head>
-        <title>title</title>
+        <title>Request Food</title>
         <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
         <script src="{{ url_for('static', filename='jquery-2.2.0.min.js') }}"></script>
     </head>
     <body>
@@ -15,7 +16,7 @@
         <section class = "menubar">
         <h1 class = "menubartitle">Request Food</h1>
         {% block content %}
-          <form method="post" action="{{ url_for('my_auction') }}" class = "request">
+          <form method="post" action="{{ url_for('my_auction') }}" class="request">
             <select class="restaurants" name="restaurant">
               <option value="NONE" selected>Select a restaurant</option>
               {% for rest in restaurants %}
