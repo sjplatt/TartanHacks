@@ -5,21 +5,27 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
     </head>
     <body>
-        <header class = "title">
-            <h1>
-            <a href="{{ url_for('home') }}">
-                FUBER
-            </a>
-            </h1>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+            </div>
         </header>
-        <section class = "menubar">
-            <h1 class = "menubartitle">Sign up</h1>
-            <form method="post" action="{{ url_for('signup') }}" class = "login">
-                <p><input type="text" name="username" required placeholder = "Username"></p>
-                <p><input type="text" name="password" required placeholder = "Password"></p>
-                <button type="submit">Submit</button>
-            </form>
+
+        <section class="login menubar">
+            <div class="card">
+                <h2>Enter your information</h2>
+                <form method="post" action="{{ url_for('signup') }}" class = "login">
+                    <p>Choose a username: <input type="text" name="username" required placeholder="Username"></p>
+                    <p>Choose a password: <input type="password" name="password" required placeholder="Password"></p>
+                    <button type="submit">Sign up</button>
+                </form>
+            </div>
         </section>
+
         <div class = "nav">
             <ul>
                 <li><a href="url">Home</a></li>
