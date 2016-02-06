@@ -29,6 +29,7 @@ body {
 	font-size: 300%;
 	color: #ffffff;
 	text-align: center;
+	margin-bottom: 25px;
 }
 
 .tableoption {
@@ -135,6 +136,38 @@ body {
     bottom: 0;
     overflow: hidden;
     font-size: 150%;
+}
+
+.request {
+	text-align: center;
+	font-size: 32px;
+	color: #ffffff;
+}
+
+select {
+	font-size: 32px;
+	color: #ffffff;
+	border: solid #C0C0C0 1px;
+    background-color: transparent;
+}
+
+.request button {
+	color: #ffffff;
+	background-color: transparent;
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	font-size: 32px;
+	padding: 10px 20px 10px 20px;
+}
+
+.request button:hover {
+	-webkit-border-radius: 12;
+	-moz-border-radius: 12;
+	border-radius: 12px;
+	font-size: 32px;
+	padding: 10px 20px 10px 20px;
+	opacity: 0.8;	
 }
 
 .nav li {
