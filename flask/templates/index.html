@@ -24,7 +24,7 @@
         <section class="splash">
             <table class="tableoption">
                 <tr>
-                    <td><a href="{{ url_for('login',chose_id=0) }}">Get Food For Someone</a></td>
+                    <td><a href="{{ url_for('login',chose_id=0) }}">Deliver Food</a></td>
                     <td><a href="{{ url_for('login',chose_id=1) }}">Get Food For Me</a></td>
                 </tr>
             </table>
@@ -34,9 +34,12 @@
             <p class="title">How it works</p>
             <table>
                 <tr>
-                    <td>image</td>
+                    <td><image src="{{ url_for('static',filename='bidding.png') }}"</td>
                     <td>
-                        <p>DESCRIPTION HERE</p>
+                        <p>Be Hungry</p>
+                        <p>Request food</p>
+                        <p>Select Bidder</p>
+                        <p>Enjoy</p>
                     </td>
                 </tr>
             </table>
