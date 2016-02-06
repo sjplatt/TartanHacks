@@ -53,7 +53,7 @@ body {
 	border-radius: 12px;
 	font-size: 32px;
 	padding: 10px 20px 10px 20px;
-	border: solid #C0C0C0 2px;
+	border: solid white 1px;
 }
 
 .tableoption a:hover {
@@ -97,7 +97,7 @@ body {
 	border-radius: 12px;
 	font-size: 32px;
 	padding: 10px 20px 10px 20px;
-	border: solid #C0C0C0 2px;
+	border: solid white 2px;
 	font-family: Arial Rounded MT Bold;
 }
 
@@ -147,8 +147,8 @@ body {
 select {
 	font-size: 32px;
 	color: #ffffff;
-	border: solid #C0C0C0 1px;
-    background-color: transparent;
+	border: solid white 1px;
+    backgroundground-color: transparent;
 }
 
 .request button {
