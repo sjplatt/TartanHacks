@@ -23,8 +23,7 @@ def signup():
             error = 'Invalid password'
         else:
             session['logged_in'] = True
-            flash('You are signed up')
-            return redirect(url_for('home'))
+            return redirect(url_for('test'))
     return render_template('signup.html')
 
 @app.route('/login', methods = ['GET','POST'])
