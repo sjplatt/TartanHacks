@@ -41,6 +41,7 @@ body {
 
 .tableoption td {
 	width: 50%;
+	padding: 10%;
 }
 
 .tableoption a {
@@ -148,7 +149,7 @@ select {
 	font-size: 32px;
 	color: #ffffff;
 	border: solid white 1px;
-    backgroundground-color: transparent;
+    background-color: transparent;
 }
 
 .request button {
