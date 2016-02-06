@@ -25,7 +25,7 @@
             {% for auction in auctionList %}
                 <td>{{auction[1]}}</td> 
                 <td>{{auction[2]}}</td>
-                <td>{{time_list[index]}}</td>
+                <td>{{time_list[auction]}}</td>
                 <td>{{auction[6]}}</td>
                 <td><a href="{{ url_for('any_auction', auction_id=auction[0]) }}">BID</a></td>
             {% endfor %}
