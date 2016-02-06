@@ -16,11 +16,12 @@
             </div>
         </header>
 
-        <section class="splash">
+        <section class="main">
+            <div class="slogan">Never leave Gates again.</div>
             <table class="tableoption">
                 <tr>
-                    <td><a href="{{ url_for('login',chose_id=0) }}">Deliver Food</a></td>
-                    <td><a href="{{ url_for('login',chose_id=1) }}">Get Food For Me</a></td>
+                    <td><a href="{{ url_for('login',chose_id=0) }}">Deliver food</a></td>
+                    <td><a href="{{ url_for('login',chose_id=1) }}">Get me food</a></td>
                 </tr>
             </table>
         </section>
@@ -29,6 +30,8 @@
             <p class="title">How it works</p>
             <image src="{{ url_for('static',filename='whatwedo.png') }}">
         </section>
+
+        <div class="splash-overlay"></div>
         <img class="splash" src="{{ url_for('static', filename='bgimage.jpg') }}">
     </body>
 </html>
