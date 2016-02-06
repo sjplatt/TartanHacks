@@ -28,9 +28,9 @@ a:link, a:visited {
 .tableoption {
 	width: 100%;
 	height: 60%;
-	border: 2px solid black;
 	text-align: center;
-	font-size: xx-large;
+	font-size: 300%;
+	background-color: lightblue;
 }
 
 .tableoption td {
@@ -48,6 +48,7 @@ a:link, a:visited {
     padding: 0;
     bottom: 0;
     overflow: hidden;
+    font-size: 150%;
 }
 
 .nav li {
