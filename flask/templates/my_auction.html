@@ -5,31 +5,40 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
     </head>
     <body>
-        <h1>My Auction</h1>
-        <p class="username">Username: {{username}}</p>
-        <p class="order">Order: {{order}}</p>
-        <p class="location">Location: {{location}}</p>
+        <header class = "title">
+            <h1>
+            <a href="{{ url_for('home') }}">
+                FUBER
+            </a>
+            </h1>
+        </header>
+        <section class = "menubar">
+            <h1 class = "menubartitle">My Auction</h1>
+            <p class="username">Username: {{username}}</p>
+            <p class="order">Order: {{order}}</p>
+            <p class="location">Location: {{location}}</p>
 
-        <div class="map">Map placeholder</div>
+            <div class="map">Map placeholder</div>
 
-        {% block content %}
-        <h3>Bids</h3>
-        <table class="bids">
-            <tr>
-                <th>Username</th>
-                <th>Price</th>
-                <th>Timestamp</th>
-                <th>Location</th>
-            </tr>
-            {% for bid in bids %}
+            {% block content %}
+            <h3>Bids</h3>
+            <table class="bids">
                 <tr>
-                    <td>{{bid[0]}}</td>
-                    <td>{{bid[1]}}</td>
-                    <td>{{bid[2]}}</td>
-                    <td>{{bid[3]}}</td>
+                    <th>Username</th>
+                    <th>Price</th>
+                    <th>Timestamp</th>
+                    <th>Location</th>
                 </tr>
-            {% endfor %}
-        </table>
-        {% endblock %}
+                {% for bid in bids %}
+                    <tr>
+                        <td>{{bid[0]}}</td>
+                        <td>{{bid[1]}}</td>
+                        <td>{{bid[2]}}</td>
+                        <td>{{bid[3]}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {% endblock %}
+        </section>
     </body>
 </html>
