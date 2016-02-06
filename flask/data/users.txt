@@ -1,5 +1,1 @@
-test
-sunny
-sam
-jun
 root

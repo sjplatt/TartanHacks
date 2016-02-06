@@ -27,9 +27,9 @@ def request_food():
     rest_dict = {}
     for restaurant in restaurants:
         rest_dict[restaurant] = api.parse_restaurant(restaurant)
-    
+    image = api.get_user_image(session['user_logged_in'])
     return render_template('request_food.html', restaurants=restaurants,
-        rest_dict=rest_dict,locations=api.get_location_list())
+        rest_dict=rest_dict,locations=api.get_location_list(),image=image)
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -91,18 +91,24 @@ def my_auction():
     auction_length = request.form['auction_length']
     location = request.form['location']
     order = restaurant + ": " + category + ": " + item + ": " + price
-
+    image = api.get_user_image(session['user_logged_in'])
+    image_map = api.user_image_map()
     aid = api.create_auction(session['user_logged_in'],order,price,auction_length,location)
     bids = api.get_bids(aid)
-    return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids)
+    return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids,images=image,
+        image_map=image_map)
 
 @app.route('/auction_list', methods = ['GET'])
 def auction_list():
     api.check_current_auctions()
     auctionList = []
+    image = api.get_user_image(session['user_logged_in'])
+    image_map = api.user_image_map()
+
     for auctionID in api.get_all_active():
         auctionList.append([auctionID] + api.get_info_auction(auctionID))
-    return render_template('auction_list.html', auctionList=auctionList)
+    return render_template('auction_list.html', auctionList=auctionList,
+        image=image,image_map=image_map)
 
 
 @app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
@@ -115,9 +121,13 @@ def any_auction(auction_id):
         username = auction_info[0]
         bids = api.get_bids(auction_id)
         locations = api.get_location_list();
+        image = api.get_user_image(session['user_logged_in'])
+        image_map = api.user_image_map()
+
         return render_template('any_auction.html',username=username,
             order=auction_info[1],location=auction_info[5],aid=auction_id,
-            bids=bids,is_self=is_self,locations=locations)
+            bids=bids,is_self=is_self,locations=locations,
+            image=image,image_map=image_map)
     
     location = request.form['location']
     price = request.form['price']
