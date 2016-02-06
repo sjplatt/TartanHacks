@@ -90,9 +90,10 @@ def my_auction():
 
 @app.route('/auction_list', methods = ['GET'])
 def auction_list():
+    api.check_current_auctions()
     auctionList = []
     for auctionID in api.get_location_list():
-        auctionList.append(api.get_info_auction(auctionID))
+        auctionList.append([auctionID] + api.get_info_auction(auctionID))
     return render_template('auction_list.html', auctionList)
 
 
