@@ -16,6 +16,7 @@
             {% block content %}
             {% for auction in auctionList %}
                 <p>username {{auction[1]}}, description {{auction[2]}}, location {{auction[6]}}, link <a href="{{ url_for('any_auction', auction_id=auction[0]) }}">asdf</a></p>
+                <p>{{time_list[auction[0]]}}</p>
             {% endfor %}
             {% endblock %}
         </section>
