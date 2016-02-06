@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
+import api
+from scottylabparser import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'F34TF$($e34D';
@@ -18,21 +20,28 @@ def writeFile(path, contents):
 def home():
     return render_template('index.html')
 
-@app.route('/test', methods = ['GET'])
-def test():
-    return render_template('test.html')
+@app.route('/request_food', methods = ['GET'])
+def request_food():
+    restaurants = api.get_restaurants()
+    rest_dict = {}
+    for restaurant in restaurants:
+        rest_dict[restaurant] = api.parse_restaurant(restaurant)
+    
+    print(rest_dict)
+    return render_template('request_food.html', restaurants=restaurants,
+        rest_dict=rest_dict)
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
     error = None
     if request.method == 'POST':
         session['logged_in'] = True
-        # session['user_logged_in'] = username
+        session['user_logged_in'] = username
         username = request.form['username']
         password = request.form['password']
         writeFile('data/users.txt', '%s\n' % (username))
         writeFile('data/%s.txt' % (username), 'password:%s' % password)
-        return redirect(url_for('test'))
+        return redirect(url_for('request_food'))
     return render_template('signup.html')
 
 @app.route('/login', methods = ['GET','POST'])
@@ -58,9 +67,9 @@ def login():
                     passwordHash = (val)
                     break
             if passwordHash == (password):
-                # session['logged_in'] = True
-                # session['user_logged_in'] = username
-                return redirect(url_for('test'))
+                session['logged_in'] = True
+                session['user_logged_in'] = username
+                return redirect(url_for('request_food'))
             else:
                 error = 'Invalid password'
         else:

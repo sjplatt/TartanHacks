@@ -26,7 +26,7 @@ def restaurant_dict(name):
     data = parse_original()
     for loc in data:
         if(loc['name'] == name):
-            print(loc)
+            return loc
             break
 
 def restaurant_location(loc):
