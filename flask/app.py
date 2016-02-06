@@ -28,9 +28,11 @@ def request_food():
     for restaurant in restaurants:
         rest_dict[restaurant] = api.parse_restaurant(restaurant)
     image = api.get_user_image(session['user_logged_in'])
+    times = special_restaurant_dict()
+    
     return render_template('request_food.html', restaurants=restaurants,
         rest_dict=rest_dict,locations=api.get_location_list(),image=image,
-        username=session['user_logged_in'])
+        username=session['user_logged_in'],times=times)
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
