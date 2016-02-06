@@ -43,7 +43,7 @@ def signup():
         writeFile('data/%s.txt' % (username), 'password:%s\n' % password)
         rand = random.randint(1,5)
         writeFile('data/%s.txt' % (username), 
-            'image:%s' % "image"+str(rand)+".jpg")
+            'image:%s' % "image"+str(rand)+".jpg\n")
         return redirect(url_for('request_food'))
     return render_template('signup.html')
 
