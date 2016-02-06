@@ -41,19 +41,22 @@
                         <th>Restaurant</th>
                         <th>Seconds left</th>
                         <th>Deliver to</th>
+                        <th></th>
                     </tr>
-                    <tr>
+                   
                     {% block content %}
                     {% for auction in auctionList %}
+                    <tr>
                         <td><img src = "{{url_for('static', filename = image_map[auction[1]])}}">{{auction[1]}}</td> 
                         <td>{{auction[2].split(": ")[2] + ", $" + auction[2].split(": ")[3]}}</td>
                         <td>{{auction[2].split(": ")[0]}}
                         <td>{{time_list[auction[0]]}}</td>
                         <td>{{auction[6]}}</td>
                         <td><button><a href="{{ url_for('any_auction', auction_id = auction[0]) }}">Bid!</a></button></td>
+                    </td>
                     {% endfor %}
                     {% endblock %}
-                    </tr>
+                    
                 </table>
             </div>
         </section>
