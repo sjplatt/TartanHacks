@@ -87,8 +87,9 @@ def find_highest_offset():
         if file.endswith(".txt"):
             if "auction" in file[:7]:
                 res.append(int(file[7:-4]))
-
-    return max(res)+1
+    if len(res) == 0:
+        return 1
+    else: return max(res)+1
 
 def create_auction(userid, order, price, wait, loc):
     print("START")
