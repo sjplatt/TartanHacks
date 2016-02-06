@@ -156,6 +156,15 @@ def get_location_list():
     for line in res:
         ret.append(line)
     return ret
+
+def get_all_active():
+    res = readFile("./data/bidding/open_auctions.txt").split("\n")
+    return res
+
+def get_info_auction(id):
+    res = readFile("./data/bidding/auction"+str(id) + ".txt")
+    return res.split("\n")
+
 #add_bid_to_auction(2,"sjplatt","2")
 #create_auction("sjplatt","burrito","6.95","5","resnick")
 #create_auction("sjplatt","burrito","6.95","1","resnick")
