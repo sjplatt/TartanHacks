@@ -5,29 +5,50 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename = 'icon.png') }}">
     </head>
     <body>
-        <header class = "title">
-            <h1>
-            <a href="{{ url_for('home') }}">
-                FUBER
-            </a>
-            </h1>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+
+                <!-- <span class="about">
+                <a href="#how-it-works">
+                    How it works
+                </a>
+                </span> -->
+            </div>
         </header>
 
-        <section class = "splash">
-            <table class = "tableoption">
+        <section class="splash">
+            <table class="tableoption">
                 <tr>
                     <td><a href="{{ url_for('login',chose_id=0) }}">Get Food For Someone</a></td>
                     <td><a href="{{ url_for('login',chose_id=1) }}">Get Food For Me</a></td>
                 </tr>
             </table>
         </section>
-        <div class = "nav">   
+
+        <section class="description" id="how-it-works">
+            <p class="title">How it works</p>
+            <table>
+                <tr>
+                    <td>image</td>
+                    <td>
+                        <p>DESCRIPTION HERE</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!--section class="nav">   
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="url">About</a></li>
                 <li><a href="url">Contact Us</a></li>
             </ul>
-        </div>
+        </section-->
         <img class="splash" src="{{ url_for('static', filename='bgimage.jpg') }}">
     </body>
 </html>
