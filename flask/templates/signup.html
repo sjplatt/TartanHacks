@@ -6,19 +6,17 @@
     <body>
         <header class = "title">
             <h1>
-            <a href="{{ url_for('index') }}">
+            <a href="{{ url_for('home') }}">
                 FUBER
             </a>
             </h1>
         </header>
-	    <form class = "signinoption">
-	        <p><input type="text" name="username" placeholder="Username" required></p>
-	        <p><input type="text" name="password" placeholder="Password" required></p>
-	        <p>
-                <button type="submit" class = "btn">Login</button>
-                <button type="submit" class = "btn">Signup</button>
-            </p>
-	    </form>
+	    <h1>Sign up</h1>
+        <form method="post" action="{{ url_for('signup') }}">
+            <p><label>Username:</label> <input type="text" name="username" required></p>
+            <p><label>Password:</label> <input type="text" name="password" required></p>
+            <p><button type="submit">Send</button></p>
+        </form>
 		<div class = "nav">
 		    <ul>
 		    	<li><a href="url">Home</a></li>
