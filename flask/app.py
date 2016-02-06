@@ -137,7 +137,16 @@ def any_auction(auction_id):
 
     return redirect(url_for('any_auction',auction_id=auction_id))
 
-
+@app.route('/my_account',methods=['GET'])
+def my_account():
+    username = session['user_logged_in']
+    op,closed = api.get_my_auctions(username)
+    winner_for_close = {}
+    for close in closed:
+        winner_for_close[close[0]] = api.get_winner(close[0])
+    bids = []
+    return render_template('myaccount.html',op=op,closed=closed,bids=bids,
+        winner_map=winner_for_close)
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
