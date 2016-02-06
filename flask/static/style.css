@@ -63,7 +63,7 @@ section {
 section.splash {
 	padding: 0;
 	opacity: 0.9;
-	height: 320px;	
+	height: 480px;	
 	font-size: 16px;
 	color: white;
 }
@@ -140,7 +140,7 @@ section.nav ul {
 
 .tableoption {
 	width: 100%;
-	height: 320px;
+	height: 480px;
 	text-align: center;
 	font-size: 200%	;
 }
