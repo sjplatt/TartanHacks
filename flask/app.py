@@ -93,8 +93,7 @@ def my_auction():
     image_map = api.user_image_map()
     aid = api.create_auction(session['user_logged_in'],order,price,auction_length,location)
     bids = api.get_bids(aid)
-    return render_template('my_auction.html',username=session['user_logged_in'],order=order,location=location,aid=aid,bids=bids,images=image,
-        image_map=image_map)
+    return redirect(url_for('any_auction',auction_id=aid))
 
 @app.route('/auction_list', methods = ['GET'])
 def auction_list():
