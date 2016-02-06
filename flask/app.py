@@ -58,14 +58,11 @@ def login(chose_id):
         checkFile = False
         users = readFile('data/users.txt')
         for user in users.splitlines():
-
             if user ==  username:
                 checkFile = True
                 break
         if checkFile:
             text = readFile('data/%s.txt' % (username))
-
-
             for line in text.splitlines():
                 [key, val] = line.split(":")
                 if key == "password":
@@ -124,7 +121,6 @@ def any_auction(auction_id):
         locations = api.get_location_list();
         image = api.get_user_image(session['user_logged_in'])
         image_map = api.user_image_map()
-
         return render_template('any_auction.html',username=username,
             order=auction_info[1],location=auction_info[5],aid=auction_id,
             bids=bids,is_self=is_self,locations=locations,

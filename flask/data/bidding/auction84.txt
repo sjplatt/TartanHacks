@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+sunny
+Carnegie Mellon Cafe: Custom Omelets: Three-Filling Omelet: 6.59
+6.59
+12:47:13.767225
+=======
 root
 Carnegie Mellon Cafe: Sandwiches & Wraps: Smokehouse BBQ Chicken Panini: 7.79
 7.79
 12:49:46.321900
+>>>>>>> dc8ab3cc4d545d90c73377633b7ceca94f87f8b4
 5
 resnick

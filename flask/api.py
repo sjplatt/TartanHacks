@@ -209,14 +209,15 @@ def get_my_auctions(userid):
 
 #USER
 def get_user_image(userid):
-    res = readFile("./data/" + str(userid) + ".txt").split("\n")
+    res = readFile("data/" + str(userid) + ".txt").split("\n")
     return res[1].split(":")[1]
 
 
 def user_image_map():
-    res = readFile("./data/users.txt").split("\n")
+    res = readFile("data/users.txt").split("\n")
     dic = {}
-    for line in res:
+    for line    in res:
+        if line == '': continue
         dic[line] = get_user_image(line)
     return dic
 #add_bid_to_auction(2,"sjplatt","2")
