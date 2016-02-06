@@ -120,7 +120,7 @@ def any_auction(auction_id):
         is_self = True
         if str(auction_info[0]) == str(session['user_logged_in']):
             is_self = False
-        username = auction_info[0]
+        username_a = auction_info[0]
         bids = api.get_bids(auction_id)
         locations = api.get_location_list();
         image = api.get_user_image(session['user_logged_in'])
@@ -130,7 +130,8 @@ def any_auction(auction_id):
         timeleft = api.time_dif(auction_info)
         api.check_current_auctions()
         print(winner)
-        return render_template('any_auction.html',username=username,
+        return render_template('any_auction.html',username_a=username_a,
+            username=session['user_logged_in'],
             order=auction_info[1],location=auction_info[5],aid=auction_id,
             bids=bids,is_self=is_self,locations=locations,
             image=image,image_map=image_map, time_left=timeleft,
