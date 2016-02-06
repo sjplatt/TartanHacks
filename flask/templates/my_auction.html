@@ -14,31 +14,37 @@
         </header>
         <section class = "menubar">
             <h1 class = "menubartitle">My Auction</h1>
-            <p class="username">Username: {{username}}</p>
-            <p class="order">Order: {{order}}</p>
-            <p class="location">Location: {{location}}</p>
-
-            <div class="map">Map placeholder</div>
-
-            {% block content %}
-            <h3>Bids</h3>
-            <table class="bids">
+            <table>
                 <tr>
-                    <th>Username</th>
-                    <th>Price</th>
-                    <th>Timestamp</th>
-                    <th>Location</th>
+                    <td>
+                        <p class="username">Username: {{username}}</p>
+                        <p class="order">Order: {{order}}</p>
+                        <p class="location">Location: {{location}}</p>
+                        <div class="map">Map placeholder</div>
+                        {% block content %}
+                    </td>
+                    <td>
+                        <h3>Bids</h3>
+                        <table class="bids">
+                            <tr>
+                                <th>Username</th>
+                                <th>Price</th>
+                                <th>Timestamp</th>
+                                <th>Location</th>
+                            </tr>
+                            {% for bid in bids %}
+                                <tr>
+                                    <td>{{bid[0]}}</td>
+                                    <td>{{bid[1]}}</td>
+                                    <td>{{bid[2]}}</td>
+                                    <td>{{bid[3]}}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        {% endblock %}
+                    </td>
                 </tr>
-                {% for bid in bids %}
-                    <tr>
-                        <td>{{bid[0]}}</td>
-                        <td>{{bid[1]}}</td>
-                        <td>{{bid[2]}}</td>
-                        <td>{{bid[3]}}</td>
-                    </tr>
-                {% endfor %}
             </table>
-            {% endblock %}
         </section>
     </body>
 </html>
