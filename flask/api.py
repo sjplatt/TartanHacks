@@ -110,6 +110,18 @@ def create_auction(userid, order, price, wait, loc):
 def add_to_current_auctions(id):
     writeFileAppend("./data/bidding/open_auctions.txt",str(id) + "\n")
 
+def get_lowest_bidder(auctionid):
+    res = readFile("./data/bidding/auc_bid" + str(auctionid) + ".txt").split("\n")
+    lowest_bidder = 50000000
+    lowest_bidder_string = []
+    for line in res:
+        if line != "":
+            split = line.split("|")
+            if int(split[1]) < lowest_bidder:
+                lowest_bidder = int(split[1])
+                lowest_bidder_string = split
+    return lowest_bidder_string
+
 def check_current_auctions():
     res = readFile("./data/bidding/open_auctions.txt").split("\n")
     keep = []
@@ -131,7 +143,9 @@ def check_current_auctions():
 
     result = ""
     for r in remove:
-        result+=r + "|\n"
+        lo = get_lowest_bidder(r)
+        print("HERE")
+        result+=r + "|" + lo[0] + "|" + lo[1]+ "|" + lo[2] + "|" + lo[3] +"\n"
     writeFileAppend("./data/bidding/closed_auctions.txt",result)
 
 def is_current_auction(id):
@@ -181,7 +195,7 @@ def get_info_auction(id):
 #Return None of no winner, winner list if winner
 #Winner list: [winnerid, winnerprice, winner location]
 def get_winner(auctionid):
-    res = readFile("./data/closed_auctions.txt").split("\n")
+    res = readFile("./data/bidding/closed_auctions.txt").split("\n")
     for line in res:
         split = line.split("|")
         if split[0] == auctionid:
@@ -205,15 +219,18 @@ def get_my_auctions(userid):
     closed = []
     res = readFile("./data/bidding/open_auctions.txt").split("\n")
     for line in res:
-        res1 = readFile("./data/bidding/auction" + line + ".txt").split('\n')
-        if res1[0] == userid:
-            op.append(res1)
+        if line != "":
+            res1 = readFile("./data/bidding/auction" + line + ".txt").split('\n')
+            if res1[0] == userid:
+                op.append([line]+res1)
 
     res = readFile("./data/bidding/closed_auctions.txt").split("\n")
     for line in res:
-        res1 = readFile("./data/bidding/auction" + line + ".txt").split('\n')
-        if res1[0] == userid:
-            closed.append(res1)
+        if line != "":
+            real_len = line.split("|")
+            res1 = readFile("./data/bidding/auction" + real_len[0] + ".txt").split('\n')
+            if res1[0] == userid:
+                closed.append([real_len[0]]+res1)
     return op,closed
 
 #USER
