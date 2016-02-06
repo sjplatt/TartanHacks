@@ -14,7 +14,7 @@
         {% block content %}
         <h3>Bids</h3>
 
-        <form method="post" action="{{ url_for('any_auction') }}" class="request">
+        <form method="post" action="{{ url_for('any_auction',auction_id=aid) }}" class="request">
             I will deliver from <select name="location">
             {% for loc in locations %}
                 <option value="{{loc}}">{{loc}}</option>

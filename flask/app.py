@@ -90,23 +90,35 @@ def my_auction():
 
 @app.route('/auction_list', methods = ['GET'])
 def auction_list():
+    api.check_current_auctions()
     auctionList = []
     for auctionID in api.get_location_list():
-        auctionList.append(api.get_info_auction(auctionID))
+        auctionList.append([auctionID] + api.get_info_auction(auctionID))
     return render_template('auction_list.html', auctionList)
 
 
-@app.route('/any_auction/<auction_id>',methods = ['GET'])
+@app.route('/any_auction/<auction_id>',methods = ['GET','POST'])
 def any_auction(auction_id):
-    auction_info = api.get_info_auction(auction_id)
-    is_self = False
-    if auction_info[0] == session['user_logged_in']:
-        is_self = True
-    username = auction_info[0]
-    bids = api.get_bids(auction_id)
-    return render_template('any_auction.html',username=username,
-        order=auction_info[1],location=auction_info[5],aid=auction_id,
-        bids=bids,is_self=is_self,locations=api.get_location_list())
+    if request.method == 'GET':
+        auction_info = api.get_info_auction(auction_id)
+        is_self = False
+        if auction_info[0] == session['user_logged_in']:
+            is_self = True
+        username = auction_info[0]
+        bids = api.get_bids(auction_id)
+        locations = api.get_location_list();
+        return render_template('any_auction.html',username=username,
+            order=auction_info[1],location=auction_info[5],aid=auction_id,
+            bids=bids,is_self=is_self,locations=locations)
+    
+    location = request.form['location']
+    price = request.form['price']
+    cur_id = session['user_logged_in']
+    api.add_bid_to_auction(auction_id,cur_id,price,location)
+
+    return redirect(url_for('any_auction',auction_id=auction_id))
+
+
 # @app.route('/message')
 # def message():
 #     if not 'username' in session:
