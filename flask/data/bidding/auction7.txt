@@ -1,6 +1,0 @@
-root
-Carnegie Mellon Cafe: Blended Beverages: Starbucks Blended Coffee Beverages: 5.29
-5.29
-14:46:48.903623
-5
-resnick
