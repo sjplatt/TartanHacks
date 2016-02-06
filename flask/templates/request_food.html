@@ -6,12 +6,17 @@
         <script src="{{ url_for('static', filename='jquery-2.2.0.min.js') }}"></script>
     </head>
     <body>
-        <header class = "title">
-            <h1>
-            <a href="{{ url_for('home') }}">
-                FUBER
-            </a>
-            </h1>
+        <header>
+            <div>
+                <span class="title">
+                <a href="{{ url_for('home') }}">
+                    FUBER
+                </a>
+                </span>
+                <span>
+                    <img src = "{{url_for('static', filename = image)}}">{{username}}
+                </span>
+            </div>
         </header>
         <section class = "menubar">
         <h1 class = "menubartitle">Request Food</h1>
