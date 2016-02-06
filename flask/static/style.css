@@ -196,7 +196,9 @@ section.nav ul {
 	font-size: 80%;
 }
 
-
+.whatwedo {
+	margin-left: -150px;
+}
 
 
 /* OTHER PAGES other than homepage */
