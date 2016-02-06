@@ -1,5 +1,5 @@
-resnick
-gates
-uc
-donner
-morewood
+Resnik
+Gates
+UC
+Donner
+Morewood
